@@ -19,6 +19,7 @@ namespace GGJ_2026
         [SerializeField] public ScenesManager scenesManager;
         [SerializeField] public TransitionsManager transitionsManager;
         [SerializeField] public UIManager uiManager;
+        [SerializeField] public InputsManager inputsManager;
         [SerializeField] public LevelsManager levelsManager;
         [Header("References")]
         [SerializeField] public EventSubscriber eventSubscriber;
