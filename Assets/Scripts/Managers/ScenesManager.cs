@@ -38,7 +38,7 @@ namespace PortalRollerCoaster
 
         public void GoToCurrentLevelCounterScene()
         {
-            GoToScene(GameManager.instance.levelsManager.GetCurrentLevelCounterLevelData().sceneField);
+            //GoToScene(GameManager.instance.levelsManager.GetCurrentLevelCounterLevelData().sceneField);
         }
     }
 }

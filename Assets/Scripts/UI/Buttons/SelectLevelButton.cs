@@ -5,9 +5,9 @@ using UnityEngine.EventSystems;
 
 namespace PortalRollerCoaster
 {
-    public class SelectLevelButton : MyMonoBehaviour, IEventSubscriberDeclarator
+    public class SelectLevelButton : MyMonoBehaviour//, IEventSubscriberDeclarator
     {
-		[SerializeField] private Button button;
+/*		[SerializeField] private Button button;
         [SerializeField] private TextMeshProUGUI text;
 
         private LevelData levelData;
@@ -52,6 +52,6 @@ namespace PortalRollerCoaster
                 GameManager.instance.persistentDataManager.persistentData.SetCurrentLevelCounter(levelData.GetIndex());
                 GameManager.instance.scenesManager.GoToCurrentLevelCounterScene();
             }
-        }
+        }*/
     }
 }
