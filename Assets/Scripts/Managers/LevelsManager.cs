@@ -6,7 +6,7 @@ namespace PortalRollerCoaster
 {
 	public class LevelsManager : Manager
 	{
-		/*[SerializeField] public List<LevelData> levelDatasList = new();
+		[SerializeField] public List<LevelData> levelDatasList = new();
 
 		public LevelData GetCurrentLevelCounterLevelData()
 		{
@@ -21,6 +21,6 @@ namespace PortalRollerCoaster
         public int GetLevelDataIndex(LevelData levelData)
 		{
 			return levelDatasList.IndexOf(levelData);
-		}*/
+		}
     }
 }

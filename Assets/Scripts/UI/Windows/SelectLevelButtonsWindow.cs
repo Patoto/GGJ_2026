@@ -6,7 +6,7 @@ namespace PortalRollerCoaster
 {
 	public class SelectLevelButtonsWindow : MyMonoBehaviour
 	{
-		/*[SerializeField] private VerticalLayoutGroup contentVerticalLayoutGroup;
+		[SerializeField] private VerticalLayoutGroup contentVerticalLayoutGroup;
 		[SerializeField] private SelectLevelButton selectLevelButtonPrefab;
 
         private void Start()
@@ -23,6 +23,6 @@ namespace PortalRollerCoaster
         private void CreateSelectLevelButton(LevelData levelData)
         {
             SelectLevelButton.CreateSelectLevelButton(selectLevelButtonPrefab, contentVerticalLayoutGroup.gameObject, levelData);
-        }*/
+        }
     }
 }
