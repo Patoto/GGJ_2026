@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class EditorUtils
     {

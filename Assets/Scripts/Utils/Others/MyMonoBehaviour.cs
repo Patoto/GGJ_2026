@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class MyMonoBehaviour : MonoBehaviour
     {

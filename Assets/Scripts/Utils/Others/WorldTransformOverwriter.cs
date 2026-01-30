@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     [ExecuteInEditMode]
 	public class WorldTransformOverwriter : MyMonoBehaviour

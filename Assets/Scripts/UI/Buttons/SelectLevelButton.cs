@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class SelectLevelButton : MyMonoBehaviour, IEventSubscriberDeclarator
     {

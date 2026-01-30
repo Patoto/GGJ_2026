@@ -2,7 +2,7 @@ using System;
 using QFSW.QC;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     [CommandPrefix(Utils.PROJECT_NAME + ".")]
     public class DeveloperCommands : MyMonoBehaviour

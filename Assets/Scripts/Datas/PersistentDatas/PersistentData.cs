@@ -1,6 +1,6 @@
 using System;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
 	[Serializable]
 	public class PersistentData

@@ -17,12 +17,12 @@ using FieldInfo = System.Reflection.FieldInfo;
 using Object = UnityEngine.Object;
 using PropertyInfo = System.Reflection.PropertyInfo;
 using Random = UnityEngine.Random;
-using HorizontalDirection = PortalRollerCoaster.Utils.HorizontalDirection;
+using HorizontalDirection = GGJ_2026.Utils.HorizontalDirection;
 using Unity.VisualScripting;
 using Sequence = DG.Tweening.Sequence;
 using UnityEngine.UI;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public static class Extensions
     {

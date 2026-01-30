@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     [RequireComponent(typeof(PlayableDirector))]
     public class PlayableDirectorEditor : MyMonoBehaviour

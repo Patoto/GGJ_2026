@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class Transition : MyMonoBehaviour
     {

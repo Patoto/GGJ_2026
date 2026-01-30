@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public abstract class Manager : MyMonoBehaviour
     {

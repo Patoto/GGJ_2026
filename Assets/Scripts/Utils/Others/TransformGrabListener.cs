@@ -3,7 +3,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
 	[InitializeOnLoad]
 	public static class TransformGrabListener

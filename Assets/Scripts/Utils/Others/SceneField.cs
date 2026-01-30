@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 using UnityEditor;
 #endif
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
 	[Serializable]
 	public class SceneField

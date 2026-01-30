@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     [RequireComponent(typeof(Joint))]
     public class JointBreakListener : MyMonoBehaviour

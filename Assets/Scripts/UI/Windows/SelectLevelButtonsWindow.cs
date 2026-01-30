@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
 	public class SelectLevelButtonsWindow : MyMonoBehaviour
 	{

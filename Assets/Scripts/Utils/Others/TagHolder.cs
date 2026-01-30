@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class TagHolder : MyMonoBehaviour
     {

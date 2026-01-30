@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     [RequireComponent(typeof(AudioSource))]
     public class Sound : MyMonoBehaviour

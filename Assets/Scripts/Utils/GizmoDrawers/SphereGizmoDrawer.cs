@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using NaughtyAttributes;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class SphereGizmoDrawer : MyMonoBehaviour
     {

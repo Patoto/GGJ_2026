@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 using System;
 using System.Linq;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class CurrentVirtualCameraSetter : MyMonoBehaviour, IEventSubscriberDeclarator
     {

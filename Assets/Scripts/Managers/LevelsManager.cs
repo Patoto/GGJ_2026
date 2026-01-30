@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
 	public class LevelsManager : Manager
 	{

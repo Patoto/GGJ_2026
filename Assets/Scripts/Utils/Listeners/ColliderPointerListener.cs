@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class ColliderPointerListener : MyMonoBehaviour, IEventSubscriberDeclarator
     {

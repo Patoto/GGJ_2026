@@ -9,7 +9,7 @@ using Canvas = UnityEngine.Canvas;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public static class Utils
     {
@@ -34,7 +34,7 @@ namespace PortalRollerCoaster
         public const string EMISSION_COLOR_SHADER_PROPERTY_NAME = "_EmissionColor";
         public const string EMISSION_SHADER_PROPERTY_NAME = "_EMISSION";
         //Others
-        public const string PROJECT_NAME = nameof(PortalRollerCoaster);
+        public const string PROJECT_NAME = nameof(GGJ_2026);
         public const string NEW_LINE_CHARACTER = "\n";
         public const int DIGIT_GROUP_DEFAULT_LENGTH = 3;
 

@@ -3,7 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using NaughtyAttributes;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public class TransformChanger : MyMonoBehaviour
     {

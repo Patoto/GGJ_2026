@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace PortalRollerCoaster
+namespace GGJ_2026
 {
     public static class GeneralEditorFunctions
     {
