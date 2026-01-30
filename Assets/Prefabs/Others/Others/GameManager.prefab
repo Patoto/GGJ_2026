@@ -1185,6 +1185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce19f3e7843a314f9ebb718b6045feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testingSceneSceneField:
+    sceneAsset: {fileID: 102900000, guid: 244da8289e0f3403bae9cfab5d0c96b1, type: 3}
+    scenePath: Assets/Scenes/Others/Testing.unity
 --- !u!1 &3835755481380873904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,9 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5a70c0804bf4596932b8e40a8cf624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalRollerCoaster.LevelsManager
-  levelDatasList:
-  - {fileID: 3671758263574565937, guid: 13324193bd6ca4faa8ff26efb76d364a, type: 3}
-  - {fileID: 3671758263574565937, guid: 3f5522e9a15724576902fe1f9485cba6, type: 3}
+  levelDatasList: []
 --- !u!1 &4539105613633163282
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,12 +3506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5ded6941d8b2f439f8eb1ad8522d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaceDraggerTriggerTag: {fileID: 1573709181385194652, guid: 40fb45cc8e0634821a30d58baaac2aef, type: 3}
-  draggableSurfaceColliderTag: {fileID: 1573709181385194652, guid: 4a4a95cfbf8d446f5a5d92e54fb673a3, type: 3}
-  pathColliderTag: {fileID: 1573709181385194652, guid: c78b5b989a0c545db88a6e4466d1c9c2, type: 3}
-  portalableSurfaceTag: {fileID: 6788547500292824172, guid: f576fd87651a8414bb2a0c795b664db8, type: 3}
-  portalTransporterTriggerTag: {fileID: 797723275992831432, guid: 8af33ec22d5434fdbb7b056fdf26b97c, type: 3}
-  platformColliderTag: {fileID: 7668862703494818739, guid: 333ceb2ad8af64f2384e092ec019343b, type: 3}
 --- !u!1 &7109058348800174162
 GameObject:
   m_ObjectHideFlags: 0

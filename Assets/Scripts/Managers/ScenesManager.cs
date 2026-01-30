@@ -7,6 +7,8 @@ namespace PortalRollerCoaster
 {
     public class ScenesManager : Manager
     {
+        [SerializeField] public SceneField testingSceneSceneField;
+
         public const string GAME_START_SCENE_NAME = "GameStart";
 
         public void ResetScene()
@@ -38,7 +40,7 @@ namespace PortalRollerCoaster
 
         public void GoToCurrentLevelCounterScene()
         {
-            //GoToScene(GameManager.instance.levelsManager.GetCurrentLevelCounterLevelData().sceneField);
+            GoToScene(GameManager.instance.levelsManager.GetCurrentLevelCounterLevelData().sceneField);
         }
     }
 }
