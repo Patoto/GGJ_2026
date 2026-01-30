@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0f578aa52f0d90d43b4c2e1e435b2dd5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 229717
+  packageName: Inverse UI Mask
+  packageVersion: 1.3.0
+  assetPath: Assets/Kamgam/InvertedMask/EditorScripts/Installer.cs
+  uploadId: 655102

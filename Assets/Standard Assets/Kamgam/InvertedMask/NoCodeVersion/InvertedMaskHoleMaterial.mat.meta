@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0ff9c63e4dd68174aad9b417e32374b8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 229717
+  packageName: Inverse UI Mask
+  packageVersion: 1.3.0
+  assetPath: Assets/Kamgam/InvertedMask/NoCodeVersion/InvertedMaskHoleMaterial.mat
+  uploadId: 655102

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 97a1fdd8c101bb94c8e618370bab11f7
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 229717
+  packageName: Inverse UI Mask
+  packageVersion: 1.3.0
+  assetPath: Assets/Kamgam/InvertedMask/Examples/EventForwarderExamples/EventForwarderCode.unity
+  uploadId: 655102

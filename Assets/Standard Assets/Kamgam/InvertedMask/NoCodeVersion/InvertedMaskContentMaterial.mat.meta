@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c23a1479196f554eb7f86734eceb707
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 229717
+  packageName: Inverse UI Mask
+  packageVersion: 1.3.0
+  assetPath: Assets/Kamgam/InvertedMask/NoCodeVersion/InvertedMaskContentMaterial.mat
+  uploadId: 655102
