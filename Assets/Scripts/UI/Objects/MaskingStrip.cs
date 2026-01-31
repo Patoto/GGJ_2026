@@ -20,7 +20,7 @@ namespace GGJ_2026
 		{
 			if (pointerEventData.delta.y < 0)
 			{
-				transform.AddPositionY(pointerEventData.delta.y);
+				transform.SetLocalPositionY(Mathf.Max(transform.localPosition.y + pointerEventData.delta.y, 10f));
 			}
 		}
     }
