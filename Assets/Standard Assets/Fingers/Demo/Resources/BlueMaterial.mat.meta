@@ -6,3 +6,10 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41076
+  packageName: Fingers - Touch Gestures for Unity
+  packageVersion: 3.0.14
+  assetPath: Assets/Fingers/Demo/Resources/BlueMaterial.mat
+  uploadId: 585829

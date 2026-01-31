@@ -1,11 +1,19 @@
 fileFormatVersion: 2
 guid: e60df55ce16205145a2dbffc823f7000
+timeCreated: 1494857910
+licenseType: Store
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
-  executionOrder: -5
+  executionOrder: 0
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41076
+  packageName: Fingers - Touch Gestures for Unity
+  packageVersion: 3.0.14
+  assetPath: Assets/Fingers/Prefab/Script/Controls/FingersJoystickScript.cs
+  uploadId: 585829

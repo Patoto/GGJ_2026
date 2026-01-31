@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aea67d0193fbf3047bb79caba65a5a83
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41076
+  packageName: Fingers - Touch Gestures for Unity
+  packageVersion: 3.0.14
+  assetPath: Assets/Fingers/Demo/DemoSceneGestureSceneReloadInit.unity
+  uploadId: 585829

@@ -21,15 +21,21 @@ namespace DigitalRubyShared
         /// Speed (in units) that will cause the card to get swiped off the screen
         /// </summary>
         [Tooltip("Speed (in units) that will cause the card to get swiped off the screen")]
-        [Range(25.0f, 100.0f)]
-        public float SwipeAwaySpeed = 60.0f;
+        [Range(1.0f, 30.0f)]
+        public float SwipeAwaySpeed = 10.0f;
 
         /// <summary>
-        /// Reduce swipe away velocity by this amount
+        /// Amplify velocity of the swipe away amount once a swipe away is detected.
         /// </summary>
-        [Tooltip("Reduce swipe away velocity by this amount")]
-        [Range(0.1f, 1.0f)]
-        public float SwipeVelocityDampening = 0.5f;
+        [Tooltip("Amplify velocity of the swipe away amount once a swipe away is detected.")]
+        [Range(0.1f, 5.0f)]
+        public float SwipeAwayVelocityMultiplier = 3.0f;
+
+        /// <summary>
+        /// Velocity label
+        /// </summary>
+        [Tooltip("Velocity label")]
+        public UnityEngine.UI.Text VelocityLabel;
 
         private LongPressGestureRecognizer longPress;
         private Transform draggingCard;
@@ -116,14 +122,17 @@ namespace DigitalRubyShared
             else if (gesture.State == GestureRecognizerState.Executing)
             {
                 // if the gesture velocity is high enough, fling the card off screen
-                float speed = longPress.Distance(gesture.VelocityX, gesture.VelocityY);
+                float speed = new Vector2(gesture.VelocityXUnits, gesture.VelocityYUnits).magnitude;
+                VelocityLabel.text = "Velocity: " + speed + " in.";
+
                 if (speed >= SwipeAwaySpeed)
                 {
                     // convert the screen units velocity to world velocity and apply to the card
                     draggingCard.localScale = Vector3.one;
                     Vector3 worldVelocityZero = Camera.main.ScreenToWorldPoint(Vector3.zero);
-                    Vector3 worldVelocityGesture = Camera.main.ScreenToWorldPoint(new Vector3(gesture.VelocityX, gesture.VelocityY, 0.0f));
-                    Vector3 worldVelocity = (worldVelocityGesture - worldVelocityZero) * 0.5f;
+                    Vector3 worldVelocityVector = new Vector3(DeviceInfo.UnitsToPixels(gesture.VelocityXUnits), DeviceInfo.UnitsToPixels(gesture.VelocityYUnits), 0.0f);
+                    Vector3 worldVelocityGesture = Camera.main.ScreenToWorldPoint(worldVelocityVector);
+                    Vector3 worldVelocity = (worldVelocityGesture - worldVelocityZero) * SwipeAwayVelocityMultiplier;
                     worldVelocity.z = 0.0f;
                     Rigidbody2D rb = draggingCard.GetComponent<Rigidbody2D>();
                     rb.linearVelocity = worldVelocity;
@@ -138,7 +147,7 @@ namespace DigitalRubyShared
                     // reset gesture, the swipe away finishes the gesture
                     gesture.Reset();
 
-                    Debug.LogFormat("Swiping card away at world velocity {0} (screen velocity units {1})", (Vector2)worldVelocity, new Vector2(gesture.VelocityX, gesture.VelocityY));
+                    Debug.LogFormat("Swiping card away at world velocity {0} (screen velocity units {1})", (Vector2)worldVelocity, new Vector2(gesture.VelocityXUnits, gesture.VelocityYUnits));
                 }
                 else
                 {

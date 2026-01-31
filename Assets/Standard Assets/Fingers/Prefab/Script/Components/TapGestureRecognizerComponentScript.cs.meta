@@ -1,11 +1,19 @@
 fileFormatVersion: 2
 guid: e915670b4bfca364cbcb483c0ca6c50d
+timeCreated: 1507817863
+licenseType: Store
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
-  executionOrder: -10
+  executionOrder: 0
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 41076
+  packageName: Fingers - Touch Gestures for Unity
+  packageVersion: 3.0.14
+  assetPath: Assets/Fingers/Prefab/Script/Components/TapGestureRecognizerComponentScript.cs
+  uploadId: 585829

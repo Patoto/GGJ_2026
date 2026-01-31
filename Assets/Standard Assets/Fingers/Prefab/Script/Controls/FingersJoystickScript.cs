@@ -101,7 +101,6 @@ namespace DigitalRubyShared
         private Vector2 startCenter;
         private Vector2 homePosition;
         private RectTransform rectTransform;
-        private bool previousFrameExecuting;
 
         private readonly PanGestureRecognizer panGesture = new PanGestureRecognizer();
         /// <summary>
@@ -132,11 +131,6 @@ namespace DigitalRubyShared
             PanGesture.Reset();
             SetImagePosition(startCenter);
             Executing = false;
-        }
-
-        private void LateUpdate()
-        {
-            previousFrameExecuting = Executing;
         }
 
         private void SetImagePosition(Vector2 pos)
@@ -393,16 +387,6 @@ namespace DigitalRubyShared
                 FingersCrossPlatformInputReflectionScript.UnRegisterVirtualAxis(CrossPlatformInputHorizontalAxisName);
                 FingersCrossPlatformInputReflectionScript.UnRegisterVirtualAxis(CrossPlatformInputVerticalAxisName);
             }
-        }
-
-        public bool JustFinishedExecuting()
-        {
-            bool joystickJustFinishedExecuting = false;
-            if (previousFrameExecuting && !Executing)
-            {
-                joystickJustFinishedExecuting = true;
-            }
-            return joystickJustFinishedExecuting;
         }
     }
 
