@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 60011125}
+  - component: {fileID: 60011126}
   m_Layer: 5
   m_Name: Cat
   m_TagString: Untagged
@@ -155,6 +156,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &60011126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60011124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fcf3bdb8b77e4d7e8421fe8862349fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2013160431}
+  paw: {fileID: 1882038399}
+  awakeSprite: {fileID: 21300000, guid: 24efd17a79d4247aeb21ee434a70e009, type: 3}
+  asleepSprite: {fileID: 21300000, guid: 20374ce6310334033b25737d03306c09, type: 3}
 --- !u!1 &80441741
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 4876077624186418307, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
       propertyPath: m_SceneBindings.Array.data[3].value
       value: 
-      objectReference: {fileID: 474645307}
+      objectReference: {fileID: 474645308}
     - target: {fileID: 5070956714923266982, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
       propertyPath: m_Name
       value: WindowCatchEvent
@@ -824,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &474645307 stripped
+--- !u!114 &474645308 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6827595012982826100, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
   m_PrefabInstance: {fileID: 474645304}

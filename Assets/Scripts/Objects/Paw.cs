@@ -13,6 +13,8 @@ namespace GGJ_2026
 
         public static Action<Vector2, Vector2> onUpdatedPosition;
 
+        public static Action<bool> onToggled;
+
         public void SubscribeToEnableEvents() { }
 
         public void UnsubscribeFromEnableEvents() { }
@@ -35,7 +37,7 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
 		{
-			gameObject.SetActive(true);
+			Toggle(true);
 			UpdatePosition(pointerEventData);
 		}
 
@@ -55,12 +57,18 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
 		{
-			gameObject.SetActive(false);
+			Toggle(false);
 		}
 
         private void OnCatchHandlerCatched()
 		{
 			Destroy(gameObject);
+		}
+
+		private void Toggle(bool on)
+		{
+			gameObject.SetActive(on);
+			onToggled?.Invoke(on);
 		}
     }
 }
