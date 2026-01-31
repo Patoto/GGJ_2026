@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4876077624186418307}
   - component: {fileID: 2397635122518000377}
   - component: {fileID: 7347671180244314060}
+  - component: {fileID: 6827595012982826100}
   m_Layer: 0
   m_Name: CatchEvent
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c185dd6c0014877b5533c1db0db623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playableDirector: {fileID: 4876077624186418307}
 --- !u!320 &4876077624186418307
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -115,6 +117,36 @@ MonoBehaviour:
         - m_Target: {fileID: -9010564247865310742}
           m_TargetAssemblyTypeName: GGJ_2026.CatchEvent, Assembly-CSharp
           m_MethodName: StopWatching
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &6827595012982826100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070956714923266982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: d0c7c64d2b8b44eb0ad357da633e85ac, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -9010564247865310742}
+          m_TargetAssemblyTypeName: GGJ_2026.CatchEvent, Assembly-CSharp
+          m_MethodName: OnFinished
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
