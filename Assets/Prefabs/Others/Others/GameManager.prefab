@@ -3509,7 +3509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078cf4bff67ec49548ba39cefb74a91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  longPressGestureRecognizer: {fileID: 0}
   swipeDownGestureRecognizer: {fileID: 2349880452851502033}
 --- !u!1 &6890059517264012088
 GameObject:
@@ -4584,9 +4583,9 @@ MonoBehaviour:
   ClearTrackedTouchesOnEndOrFail: 0
   Mask: {fileID: 0}
   Direction: 2
-  MinimumDistanceUnits: 1
-  MinimumSpeedUnits: 3
-  DirectionThreshold: 1.5
+  MinimumDistanceUnits: 0.7
+  MinimumSpeedUnits: 2
+  DirectionThreshold: 1.2
   EndMode: 2
   FailOnDirectionChange: 1
   SendBeginExecutingStates: 0
