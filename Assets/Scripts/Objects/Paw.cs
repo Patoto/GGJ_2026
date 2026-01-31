@@ -11,10 +11,11 @@ namespace GGJ_2026
 		[SerializeField] private Transform downLimitPoint;
 		[SerializeField] private Transform upLimitPoint;
 
-        private bool canReceiveInputs = true;
+        private bool canReceiveInputs;
 
         public static Action<Vector2, Vector2> onUpdatedPosition;
         public static Action<bool> onToggled;
+        public static Action<bool> onToggledCanReceiveInputs;
 
         public void SubscribeToEnableEvents() { }
 
@@ -26,6 +27,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDrag += OnLevelPointerListenerPointerDrag;
 			LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
 			CatchHandler.onCaught += OnCatchHandlerCaught;
+			LevelHandler.onFinishedIntroTimeline += OnLevelHandlerFinishedIntroTimeline;
 		}
 
 		public virtual void UnsubscribeFromInitializeEvents()
@@ -34,6 +36,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDrag -= OnLevelPointerListenerPointerDrag;
 			LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
+			LevelHandler.onFinishedIntroTimeline -= OnLevelHandlerFinishedIntroTimeline;
 		}
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
@@ -72,13 +75,24 @@ namespace GGJ_2026
 
         private void OnCatchHandlerCaught()
 		{
-			canReceiveInputs = false;
+			ToggleCanReveiveInputs(false);
 		}
 
 		private void Toggle(bool on)
 		{
 			gameObject.SetActive(on);
 			onToggled?.Invoke(on);
+		}
+
+        private void OnLevelHandlerFinishedIntroTimeline()
+		{
+			GameManager.instance.InvokeActionAfterSeconds(() => ToggleCanReveiveInputs(true), 0.5f);
+		}
+
+		private void ToggleCanReveiveInputs(bool on)
+		{
+			canReceiveInputs = on;
+			onToggledCanReceiveInputs?.Invoke(on);
 		}
     }
 }

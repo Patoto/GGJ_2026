@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace GGJ_2026
 {
 	public class LevelHandler : MyMonoBehaviour
 	{
-        public static Action onFinishedStartCoroutine;
+		[SerializeField] private PlayableDirector introPlayableDirector;
+
+        public static Action onFinishedIntroTimeline;
 
         private void Start()
         {
@@ -16,7 +19,15 @@ namespace GGJ_2026
         private IEnumerator MyStartCoroutine()
 		{
 			yield return GameManager.instance.transitionsManager.TryToPlayTransitionInCoroutine();
-			onFinishedStartCoroutine?.Invoke();
+			if (!GameManager.instance.persistentDataManager.showedIntroThisPlaySession)
+			{
+				introPlayableDirector.Play();
+			}
+		}
+
+		public void OnFinishedIntroTimeline()
+		{
+			onFinishedIntroTimeline?.Invoke();
 		}
     }
 }

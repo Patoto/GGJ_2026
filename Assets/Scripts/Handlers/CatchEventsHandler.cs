@@ -9,17 +9,18 @@ namespace GGJ_2026
 		[SerializeField] private Transform catchEventsParent;
 		
 		private List<CatchEvent> catchEventsList = new();
+		private bool invokedFirstCatchEvent;
 
         public void SubscribeToEnableEvents()
 		{
 			CatchEvent.onFinished += OnCatchEventFinished;
-			LevelHandler.onFinishedStartCoroutine += OnLevelHandlerFinishedStartCoroutine;
+			Paw.onToggledCanReceiveInputs += OnPawToggledCanReceiveInputs;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			CatchEvent.onFinished -= OnCatchEventFinished;
-			LevelHandler.onFinishedStartCoroutine -= OnLevelHandlerFinishedStartCoroutine;
+			Paw.onToggledCanReceiveInputs -= OnPawToggledCanReceiveInputs;
         }
 
         protected override void Awake()
@@ -31,6 +32,7 @@ namespace GGJ_2026
         private void InvokeNextCatchEvent()
 		{
 			InvokeActionAfterSeconds(StartRandomUnusedCatchEvent, UnityEngine.Random.Range(2.5f, 5f));
+			invokedFirstCatchEvent = true;
 		}
 
         private void StartRandomUnusedCatchEvent()
@@ -43,9 +45,12 @@ namespace GGJ_2026
 			InvokeNextCatchEvent();
 		}
 
-        private void OnLevelHandlerFinishedStartCoroutine()
+        private void OnPawToggledCanReceiveInputs(bool on)
 		{
-			InvokeNextCatchEvent();
+			if (on && !invokedFirstCatchEvent)
+			{
+				InvokeNextCatchEvent();
+			}
 		}
     }
 }

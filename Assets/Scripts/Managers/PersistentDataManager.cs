@@ -7,7 +7,8 @@ namespace GGJ_2026
 {
     public class PersistentDataManager : Manager
     {
-        [NonSerialized] public PersistentData persistentData = new();
+        [HideInInspector] public PersistentData persistentData = new();
+        [HideInInspector] public bool showedIntroThisPlaySession;
 
         private string persistentDataPath;
 
