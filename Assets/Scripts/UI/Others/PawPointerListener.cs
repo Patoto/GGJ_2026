@@ -8,20 +8,28 @@ namespace GGJ_2026
 	{
 		[SerializeField] private PointerListener pointerListener;
 
+        public static Action<PointerEventData> onPointerDown;
         public static Action<PointerEventData> onPointerDrag;
 		public static Action<PointerEventData> onPointerUp;
 
         public void SubscribeToEnableEvents()
 		{
+			PointerListener.onPointerDown += OnPointerListenerPointerDown;
 			PointerListener.onPointerDrag += OnPointerListenerPointerDrag;
 			PointerListener.onPointerUp += OnPointerListenerPointerUp;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
+			PointerListener.onPointerDown -= OnPointerListenerPointerDown;
 			PointerListener.onPointerDrag -= OnPointerListenerPointerDrag;
 			PointerListener.onPointerUp -= OnPointerListenerPointerUp;
         }
+
+        private void OnPointerListenerPointerDown(PointerListener pointerListener, PointerEventData pointerEventData)
+		{
+			onPointerDown?.Invoke(pointerEventData);
+		}
 
         private void OnPointerListenerPointerDrag(PointerListener pointerListener, PointerEventData pointerEventData)
 		{

@@ -17,23 +17,35 @@ namespace GGJ_2026
 
 		public virtual void SubscribeToInitializeEvents()
 		{
+			PawPointerListener.onPointerDown += OnPawPointerListenerPointerDown;
 			PawPointerListener.onPointerDrag += OnInputsPointerListenerPointerDrag;
 			PawPointerListener.onPointerUp += OnPawPointerListenerPointerUp;
 		}
 
 		public virtual void UnsubscribeFromInitializeEvents()
 		{
+			PawPointerListener.onPointerDown -= OnPawPointerListenerPointerDown;
 			PawPointerListener.onPointerDrag -= OnInputsPointerListenerPointerDrag;
 			PawPointerListener.onPointerUp -= OnPawPointerListenerPointerUp;
 		}
 
-        private void OnInputsPointerListenerPointerDrag(PointerEventData pointerEventData)
+        private void OnPawPointerListenerPointerDown(PointerEventData pointerEventData)
 		{
 			gameObject.SetActive(true);
+			UpdatePosition(pointerEventData);
+		}
+
+        private void OnInputsPointerListenerPointerDrag(PointerEventData pointerEventData)
+        {
+            UpdatePosition(pointerEventData);
+        }
+
+        private void UpdatePosition(PointerEventData pointerEventData)
+        {
             float clampedPositionX = Mathf.Clamp(pointerEventData.position.x, leftLimitPoint.position.x, rightLimitPoint.position.x);
             float clampedPositionY = Mathf.Clamp(pointerEventData.position.y, downLimitPoint.position.y, upLimitPoint.position.y);
             transform.position = new Vector2(clampedPositionX, clampedPositionY);
-		}
+        }
 
         private void OnPawPointerListenerPointerUp(PointerEventData pointerEventData)
 		{
