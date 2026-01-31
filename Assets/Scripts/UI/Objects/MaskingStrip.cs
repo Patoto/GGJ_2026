@@ -15,15 +15,20 @@ namespace GGJ_2026
 		{
 			LevelPointerListener.onPointerDown += OnLevelPointerListenerPointerDown;
 			LevelPointerListener.onPointerDrag += OnLevelPointerListenerPointerDrag;
-			InputsManager.onSwipeDownGestureEnded += OnInputsManagerSwipeDownGestureEnded;
+            LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			LevelPointerListener.onPointerDown -= OnLevelPointerListenerPointerDown;
 			LevelPointerListener.onPointerDrag -= OnLevelPointerListenerPointerDrag;
-			InputsManager.onSwipeDownGestureEnded -= OnInputsManagerSwipeDownGestureEnded;
+            LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
         }
+
+        private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
+		{
+			StopRollDownCoroutine();
+		}
 
         private void OnLevelPointerListenerPointerDrag(PointerEventData pointerEventData)
 		{
@@ -38,10 +43,10 @@ namespace GGJ_2026
             transform.SetLocalPositionY(Mathf.Max(transform.localPosition.y + y, 10f));
         }
 
-        private void OnInputsManagerSwipeDownGestureEnded(GestureRecognizer gestureRecognizer)
+        private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
         {
             StopRollDownCoroutine();
-            rollDownCoroutine = StartCoroutine(RollDownCoroutine(gestureRecognizer.VelocityY));
+            //rollDownCoroutine = StartCoroutine(RollDownCoroutine(pointerEventData.delta.y * 5f));
         }
 
         private void StopRollDownCoroutine()
@@ -49,20 +54,14 @@ namespace GGJ_2026
             StopCoroutine(rollDownCoroutine);
         }
 
-        private IEnumerator RollDownCoroutine(float velocityY)
+        private IEnumerator RollDownCoroutine(float speed)
 		{
-            float acceleration = -velocityY * 0.5f;
-			while (Mathf.Abs(velocityY) > 0.1f)
+			while (Mathf.Abs(speed) > 100f)
 			{
-				AddY(velocityY * Time.deltaTime);
-                velocityY += acceleration * Time.deltaTime;
+				AddY(speed * Time.deltaTime);
+                speed -= 250f * Time.deltaTime;
 				yield return null;
 			}
-		}
-
-        private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
-		{
-			StopRollDownCoroutine();
 		}
     }
 }
