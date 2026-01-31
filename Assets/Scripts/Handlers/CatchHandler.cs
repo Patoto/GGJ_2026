@@ -39,7 +39,7 @@ namespace GGJ_2026
 		{
 			while (true)
 			{
-				if (paw.gameObject.activeSelf)
+				if (paw != null && paw.gameObject.activeSelf)
 				{
 					Catch();
 				}
