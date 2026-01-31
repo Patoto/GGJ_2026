@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,21 +7,19 @@ namespace GGJ_2026
 {
     public class MaskingStrip : MyMonoBehaviour, IEventSubscriberDeclarator
     {
-        [SerializeField] private RectTransform pullAreaRectTransform;
-
         private IEnumerator rollDownCoroutine;
 
         public void SubscribeToEnableEvents()
 		{
 			LevelPointerListener.onPointerDown += OnLevelPointerListenerPointerDown;
-			LevelPointerListener.onPointerDrag += OnLevelPointerListenerPointerDrag;
+            Paw.onUpdatedPosition += OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			LevelPointerListener.onPointerDown -= OnLevelPointerListenerPointerDown;
-			LevelPointerListener.onPointerDrag -= OnLevelPointerListenerPointerDrag;
+            Paw.onUpdatedPosition -= OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
         }
 
@@ -31,11 +28,12 @@ namespace GGJ_2026
 			StopRollDownCoroutine();
 		}
 
-        private void OnLevelPointerListenerPointerDrag(PointerEventData pointerEventData)
-		{
-			if (pointerEventData.delta.y < 0 && RectTransformUtility.RectangleContainsScreenPoint(pullAreaRectTransform, pointerEventData.position, pointerEventData.pressEventCamera))
+        private void OnPawUpdatedPosition(Vector2 previousPosition, Vector2 newPosition)
+        {
+            float deltaY = newPosition.y - previousPosition.y;
+			if (deltaY < 0f)
             {
-                AddY(pointerEventData.delta.y);
+                AddY(deltaY);
             }
         }
 
