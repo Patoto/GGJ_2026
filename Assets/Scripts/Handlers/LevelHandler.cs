@@ -10,7 +10,7 @@ namespace GGJ_2026
 
         private void Start()
         {
-			StartCoroutine(MyStartCoroutine());
+			InvokeActionAfterSeconds(() => StartCoroutine(MyStartCoroutine()), 0.1f);
         }
 
         private IEnumerator MyStartCoroutine()

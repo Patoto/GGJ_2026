@@ -41,6 +41,7 @@ namespace GGJ_2026
 			gameOverBackground.DOFade(1f, 0.25f);
 			yield return new WaitForSeconds(3f);
 			yield return GameManager.instance.transitionsManager.PlayTransitionOutCoroutine();
+			yield return new WaitForSeconds(0.1f);
 			GameManager.instance.scenesManager.ResetScene();
 		}
     }
