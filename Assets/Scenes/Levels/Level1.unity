@@ -1174,6 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c45daebcafa4012aab09d4b6c5fa0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pullAreaRectTransform: {fileID: 1176947093}
 --- !u!1 &932785145
 GameObject:
   m_ObjectHideFlags: 0

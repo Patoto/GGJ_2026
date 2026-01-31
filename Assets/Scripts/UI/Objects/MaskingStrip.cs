@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
-using DG.Tweening;
-using DigitalRubyShared;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +8,8 @@ namespace GGJ_2026
 {
     public class MaskingStrip : MyMonoBehaviour, IEventSubscriberDeclarator
     {
+        [SerializeField] private RectTransform pullAreaRectTransform;
+
         private IEnumerator rollDownCoroutine;
 
         public void SubscribeToEnableEvents()
@@ -32,7 +33,7 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerDrag(PointerEventData pointerEventData)
 		{
-			if (pointerEventData.delta.y < 0)
+			if (pointerEventData.delta.y < 0 && RectTransformUtility.RectangleContainsScreenPoint(pullAreaRectTransform, pointerEventData.position, pointerEventData.pressEventCamera))
             {
                 AddY(pointerEventData.delta.y);
             }
