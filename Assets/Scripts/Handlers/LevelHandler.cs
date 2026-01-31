@@ -10,10 +10,10 @@ namespace GGJ_2026
 
         private void Start()
         {
-			StartCoroutine(StartCoroutine());
+			StartCoroutine(MyStartCoroutine());
         }
 
-        private IEnumerator StartCoroutine()
+        private IEnumerator MyStartCoroutine()
 		{
 			yield return GameManager.instance.transitionsManager.TryToPlayTransitionInCoroutine();
 			onFinishedStartCoroutine?.Invoke();
