@@ -11,8 +11,9 @@ namespace GGJ_2026
 		[SerializeField] private Transform downLimitPoint;
 		[SerializeField] private Transform upLimitPoint;
 
-        public static Action<Vector2, Vector2> onUpdatedPosition;
+        private bool canReceiveInputs = true;
 
+        public static Action<Vector2, Vector2> onUpdatedPosition;
         public static Action<bool> onToggled;
 
         public void SubscribeToEnableEvents() { }
@@ -37,13 +38,19 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
 		{
-			Toggle(true);
-			UpdatePosition(pointerEventData);
+			if (canReceiveInputs)
+			{
+				Toggle(true);
+				UpdatePosition(pointerEventData);
+			}
 		}
 
         private void OnLevelPointerListenerPointerDrag(PointerEventData pointerEventData)
         {
-            UpdatePosition(pointerEventData);
+			if (canReceiveInputs)
+			{
+				UpdatePosition(pointerEventData);
+			}
         }
 
         private void UpdatePosition(PointerEventData pointerEventData)
@@ -57,12 +64,15 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
 		{
-			Toggle(false);
+			if (canReceiveInputs)
+			{
+				Toggle(false);
+			}
 		}
 
         private void OnCatchHandlerCatched()
 		{
-			Destroy(gameObject);
+			canReceiveInputs = false;
 		}
 
 		private void Toggle(bool on)

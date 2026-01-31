@@ -49,7 +49,7 @@ namespace GGJ_2026
 			watching = true;
 			while (true)
 			{
-				if (paw != null && paw.gameObject.activeSelf)
+				if (paw.gameObject.activeSelf)
 				{
 					Catch();
 				}

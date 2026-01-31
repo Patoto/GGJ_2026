@@ -42,7 +42,7 @@ namespace GGJ_2026
 
         private void OnCatchHandlerStartedWatchCoroutine()
 		{
-			if (paw != null && !paw.gameObject.activeSelf)
+			if (!paw.gameObject.activeSelf)
 			{
 				ToggleAwake(false);
 			}
