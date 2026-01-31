@@ -7,7 +7,7 @@ namespace GGJ_2026
 {
     public class ScenesManager : Manager
     {
-        [SerializeField] public SceneField testingSceneSceneField;
+        [SerializeField] public SceneField level1SceneSceneField;
 
         public const string GAME_START_SCENE_NAME = "GameStart";
 

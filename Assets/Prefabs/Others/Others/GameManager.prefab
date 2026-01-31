@@ -942,6 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ded731b7a80a74ebefe0784b02f4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showedIntroThisPlaySession: 0
 --- !u!1 &1872419561544299770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,9 +1186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce19f3e7843a314f9ebb718b6045feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testingSceneSceneField:
-    sceneAsset: {fileID: 102900000, guid: 244da8289e0f3403bae9cfab5d0c96b1, type: 3}
-    scenePath: Assets/Scenes/Others/Testing.unity
+  level1SceneSceneField:
+    sceneAsset: {fileID: 102900000, guid: e740a3bc52858429481256e5a1a4cd96, type: 3}
+    scenePath: Assets/Scenes/Levels/Level1.unity
 --- !u!1 &3835755481380873904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4575,6 +4576,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   GestureView: {fileID: 0}
+  RestrictToGestureView: 0
   MinimumNumberOfTouchesToTrack: 1
   MaximumNumberOfTouchesToTrack: 1
   AllowSimultaneousExecutionWith: []

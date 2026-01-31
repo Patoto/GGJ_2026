@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Others/GameStart.unity
     guid: 0025d7c4ef782443d98248c8647dd3d3
   - enabled: 1
-    path: Assets/Scenes/Others/Testing.unity
-    guid: 244da8289e0f3403bae9cfab5d0c96b1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: e740a3bc52858429481256e5a1a4cd96
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -31,7 +31,7 @@ namespace GGJ_2026
         private void GoToCurrentLevelCounterScene()
         {
             //GameManager.instance.scenesManager.GoToCurrentLevelCounterScene();
-            GameManager.instance.scenesManager.GoToScene(GameManager.instance.scenesManager.testingSceneSceneField);
+            GameManager.instance.scenesManager.GoToScene(GameManager.instance.scenesManager.level1SceneSceneField);
         }
     }
 }
