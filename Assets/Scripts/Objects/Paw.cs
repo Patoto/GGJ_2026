@@ -13,12 +13,12 @@ namespace GGJ_2026
 
         public void SubscribeToEnableEvents()
 		{
-			InputsPointerListener.onPointerDrag += OnInputsPointerListenerPointerDrag;
+			PawPointerListener.onPointerDrag += OnInputsPointerListenerPointerDrag;
 		}
 
         public void UnsubscribeFromEnableEvents()
 		{			
-			InputsPointerListener.onPointerDrag -= OnInputsPointerListenerPointerDrag;
+			PawPointerListener.onPointerDrag -= OnInputsPointerListenerPointerDrag;
 		}
 
         private void OnInputsPointerListenerPointerDrag(PointerEventData pointerEventData)

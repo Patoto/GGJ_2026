@@ -1031,7 +1031,7 @@ GameObject:
   - component: {fileID: 886112373}
   - component: {fileID: 886112372}
   m_Layer: 5
-  m_Name: InputsPointerListener
+  m_Name: PawPointerListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   listenPointerMove: 1
   listenPointerExit: 0
   listenPointerDown: 1
-  listenPointerUp: 0
+  listenPointerUp: 1
   listenPointerClick: 0
 --- !u!114 &886112375
 MonoBehaviour:
