@@ -13,22 +13,19 @@ namespace GGJ_2026
         public void SubscribeToEnableEvents()
 		{
 			CatchEvent.onFinished += OnCatchEventFinished;
+			LevelHandler.onFinishedStartCoroutine += OnLevelHandlerFinishedStartCoroutine;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			CatchEvent.onFinished -= OnCatchEventFinished;
+			LevelHandler.onFinishedStartCoroutine -= OnLevelHandlerFinishedStartCoroutine;
         }
 
         protected override void Awake()
         {
             base.Awake();
 			catchEventsList = catchEventsParent.gameObject.GetChildrenWithComponent<CatchEvent>();
-        }
-
-        private void Start()
-        {
-            InvokeNextCatchEvent();
         }
 
         private void InvokeNextCatchEvent()
@@ -42,6 +39,11 @@ namespace GGJ_2026
 		}
 
         private void OnCatchEventFinished()
+		{
+			InvokeNextCatchEvent();
+		}
+
+        private void OnLevelHandlerFinishedStartCoroutine()
 		{
 			InvokeNextCatchEvent();
 		}
