@@ -25,7 +25,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDown += OnLevelPointerListenerPointerDown;
 			LevelPointerListener.onPointerDrag += OnLevelPointerListenerPointerDrag;
 			LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
-			CatchHandler.onCatched += OnCatchHandlerCatched;
+			CatchHandler.onCaught += OnCatchHandlerCaught;
 		}
 
 		public virtual void UnsubscribeFromInitializeEvents()
@@ -33,7 +33,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDown -= OnLevelPointerListenerPointerDown;
 			LevelPointerListener.onPointerDrag -= OnLevelPointerListenerPointerDrag;
 			LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
-			CatchHandler.onCatched -= OnCatchHandlerCatched;
+			CatchHandler.onCaught -= OnCatchHandlerCaught;
 		}
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
@@ -70,7 +70,7 @@ namespace GGJ_2026
 			}
 		}
 
-        private void OnCatchHandlerCatched()
+        private void OnCatchHandlerCaught()
 		{
 			canReceiveInputs = false;
 		}

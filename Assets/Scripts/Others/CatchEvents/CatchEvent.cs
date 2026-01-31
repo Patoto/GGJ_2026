@@ -4,13 +4,23 @@ using UnityEngine.Playables;
 
 namespace GGJ_2026
 {
-	public class CatchEvent : MyMonoBehaviour
+	public class CatchEvent : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
 		[SerializeField] private PlayableDirector playableDirector;
 
         public static Action onStartedWatching;
         public static Action onStoppedWatching;
         public static Action onFinished;
+
+        public void SubscribeToEnableEvents()
+		{
+			CatchHandler.onCaught += OnCatchHandlerCaught;
+		}
+
+        public void UnsubscribeFromEnableEvents()
+        {
+			CatchHandler.onCaught -= OnCatchHandlerCaught;
+        }
 
         public void StartCatchEvent()
 		{
@@ -31,5 +41,10 @@ namespace GGJ_2026
 		{
 			onFinished?.Invoke();
 		}
-	}
+
+        private void OnCatchHandlerCaught()
+		{
+			playableDirector.Pause();
+		}
+    }
 }

@@ -18,26 +18,28 @@ namespace GGJ_2026
 
         public virtual void SubscribeToInitializeEvents()
 		{
-			CatchHandler.onCatched += OnCatchHandlerCatched;
+			CatchHandler.onCaught += OnCatchHandlerCaught;
 		}
 
         public virtual void UnsubscribeFromInitializeEvents()
 		{
-			CatchHandler.onCatched -= OnCatchHandlerCatched;
+			CatchHandler.onCaught -= OnCatchHandlerCaught;
 		}
 
-        private void OnCatchHandlerCatched()
+        private void OnCatchHandlerCaught()
 		{
-			GameManager.instance.StartCoroutine(OnCatchHandlerCatchedCoroutine());
+			gameObject.SetActive(true);
+			StartCoroutine(OnCatchHandlerCatchedCoroutine());
 		}
 
         private IEnumerator OnCatchHandlerCatchedCoroutine()
 		{
-			jumpscareBackgroundCanvasGroup.DoToggleFadeAndInteractableTween(true, 0.1f);
-			jumpscareMom.transform.DOScale(5f, 0.25f).SetEase(Ease.Linear);
-			yield return new WaitForSeconds(0.2f);
+			yield return new WaitForSeconds(1f);
+			jumpscareBackgroundCanvasGroup.DoToggleFadeAndInteractableTween(true, 0.25f);
+			jumpscareMom.transform.DOScale(5f, 0.5f).SetEase(Ease.Linear);
+			yield return new WaitForSeconds(0.4f);
 			gameOverBackground.DOFade(1f, 0.25f);
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(3f);
 			yield return GameManager.instance.transitionsManager.PlayTransitionOutCoroutine();
 			GameManager.instance.scenesManager.ResetScene();
 		}

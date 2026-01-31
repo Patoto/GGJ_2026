@@ -11,7 +11,7 @@ namespace GGJ_2026
         private IEnumerator watchCoroutine;
         private bool watching;
 
-        public static Action onCatched;
+        public static Action onCaught;
         public static Action<bool, bool> onPawToggled;
         public static Action onStartedWatchCoroutine;
         public static Action onStoppedWatchCoroutine;
@@ -60,7 +60,7 @@ namespace GGJ_2026
         private void Catch()
         {
             StopWatchCoroutine();
-			onCatched?.Invoke();
+			onCaught?.Invoke();
         }
 
         private void OnCatchEventStoppedWatching()
