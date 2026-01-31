@@ -17,25 +17,25 @@ namespace GGJ_2026
 
 		public virtual void SubscribeToInitializeEvents()
 		{
-			PawPointerListener.onPointerDown += OnPawPointerListenerPointerDown;
-			PawPointerListener.onPointerDrag += OnInputsPointerListenerPointerDrag;
-			PawPointerListener.onPointerUp += OnPawPointerListenerPointerUp;
+			LevelPointerListener.onPointerDown += OnLevelPointerListenerPointerDown;
+			LevelPointerListener.onPointerDrag += OnLevelPointerListenerPointerDrag;
+			LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
 		}
 
 		public virtual void UnsubscribeFromInitializeEvents()
 		{
-			PawPointerListener.onPointerDown -= OnPawPointerListenerPointerDown;
-			PawPointerListener.onPointerDrag -= OnInputsPointerListenerPointerDrag;
-			PawPointerListener.onPointerUp -= OnPawPointerListenerPointerUp;
+			LevelPointerListener.onPointerDown -= OnLevelPointerListenerPointerDown;
+			LevelPointerListener.onPointerDrag -= OnLevelPointerListenerPointerDrag;
+			LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
 		}
 
-        private void OnPawPointerListenerPointerDown(PointerEventData pointerEventData)
+        private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
 		{
 			gameObject.SetActive(true);
 			UpdatePosition(pointerEventData);
 		}
 
-        private void OnInputsPointerListenerPointerDrag(PointerEventData pointerEventData)
+        private void OnLevelPointerListenerPointerDrag(PointerEventData pointerEventData)
         {
             UpdatePosition(pointerEventData);
         }
@@ -47,7 +47,7 @@ namespace GGJ_2026
             transform.position = new Vector2(clampedPositionX, clampedPositionY);
         }
 
-        private void OnPawPointerListenerPointerUp(PointerEventData pointerEventData)
+        private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
 		{
 			gameObject.SetActive(false);
 		}

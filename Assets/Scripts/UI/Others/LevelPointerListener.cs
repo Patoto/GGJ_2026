@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace GGJ_2026
 {
-	public class PawPointerListener : MyMonoBehaviour, IEventSubscriberDeclarator
+	public class LevelPointerListener : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
 		[SerializeField] private PointerListener pointerListener;
 

@@ -725,6 +725,21 @@ namespace GGJ_2026
             transform.position = position;
         }
 
+        public static void AddPositionX(this Transform transform, float x)
+        {
+            transform.SetPositionX(transform.position.x + x);
+        }
+
+        public static void AddPositionY(this Transform transform, float y)
+        {
+            transform.SetPositionY(transform.position.y + y);
+        }
+
+        public static void AddPositionZ(this Transform transform, float z)
+        {
+            transform.SetPositionZ(transform.position.z + z);
+        }
+
         public static void SetHorizontalPosition(this Transform transform, float x, float z)
         {
             SetPositionX(transform, x);
