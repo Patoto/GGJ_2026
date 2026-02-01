@@ -13,7 +13,6 @@ namespace GGJ_2026
 		[SerializeField] private Image gameOverBackground;
 
         public static Action onAboutToShowJumpscareMom;
-        public static Action onAboutToResetScene;
 
         public void SubscribeToEnableEvents() { }
 
@@ -45,7 +44,6 @@ namespace GGJ_2026
 			gameOverBackground.DOFade(1f, 0.25f);
 			yield return new WaitForSeconds(3f);
 			yield return GameManager.instance.transitionsManager.PlayTransitionOutCoroutine();
-			onAboutToResetScene?.Invoke();
 			GameManager.instance.scenesManager.ResetScene();
 		}
     }
