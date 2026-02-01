@@ -10,6 +10,7 @@ namespace GGJ_2026
 	{
 		[SerializeField] private Image backgroundImage;
 		[SerializeField] private Sound winMusicSoundPrefab;
+		[SerializeField] private CanvasGroup levelCanvasGroup;
 
         public void SubscribeToEnableEvents() { }
 
@@ -39,7 +40,7 @@ namespace GGJ_2026
 			GameManager.instance.audioManager.currentMusicSound.Stop();
 			yield return new WaitForSeconds(2f);
 			GameManager.instance.audioManager.PlayMusic(winMusicSoundPrefab);
-			yield return backgroundImage.DOFade(1f, 0.25f).WaitForCompletion();
+			levelCanvasGroup.alpha = 0;
 			yield return new WaitForSeconds(5f);
 			GameManager.instance.audioManager.currentMusicSound.FadeOutAndDestroy();
 			yield return GameManager.instance.transitionsManager.PlayTransitionOutCoroutine();

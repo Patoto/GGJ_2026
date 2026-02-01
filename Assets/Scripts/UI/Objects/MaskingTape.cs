@@ -21,6 +21,7 @@ namespace GGJ_2026
 		[SerializeField] private Sprite lowSprite;
 		[SerializeField] private Sprite emptySprite;
 		[SerializeField] private UIParticle onBecameEmptyUIParticle;
+		[SerializeField] private Sound onEmptySoundPrefab;
 
 		private float tapePercentageLeftAmount = 1f;
 		private State currentState;
@@ -41,7 +42,7 @@ namespace GGJ_2026
 		{
 			if (currentState != State.Empty)
 			{
-				tapePercentageLeftAmount -= Mathf.Abs(y) * 0.00001f;
+				tapePercentageLeftAmount -= Mathf.Abs(y) * 0.001f;
 				if (tapePercentageLeftAmount <= 0f)
 				{
 					tapePercentageLeftAmount = 0f;
@@ -79,6 +80,7 @@ namespace GGJ_2026
                 case State.Empty:
                     SetSprite(emptySprite);
 					transform.DoPunchSequence();
+					GameManager.instance.audioManager.PlaySound(onEmptySoundPrefab);
 					onBecameEmptyUIParticle.Play();
                     break;
             }
