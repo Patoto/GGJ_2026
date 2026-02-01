@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 940997402432621593, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
       propertyPath: m_Name
-      value: MaskingSound
+      value: CaughtSound
       objectReference: {fileID: 0}
     - target: {fileID: 940997402432621596, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53,17 +53,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940997402432621598, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 940997402432621598, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
       propertyPath: m_Volume
-      value: 0.196
+      value: 0.686
       objectReference: {fileID: 0}
     - target: {fileID: 940997402432621598, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: e3838bc06bb9b44e19cdb217bcf5d389, type: 3}
+      objectReference: {fileID: 8300000, guid: aa2cdf6112da04dccab907233aaf2afa, type: 3}
     - target: {fileID: 940997402432621599, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
       propertyPath: audioClipsList.Array.size
       value: 1
@@ -71,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 940997402432621599, guid: b9b36d43cffd3894bb15866574d06b3b, type: 3}
       propertyPath: 'audioClipsList.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: e3838bc06bb9b44e19cdb217bcf5d389, type: 3}
+      objectReference: {fileID: 8300000, guid: aa2cdf6112da04dccab907233aaf2afa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

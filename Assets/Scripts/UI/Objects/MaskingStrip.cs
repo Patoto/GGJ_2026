@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TapticPlugin;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,9 +11,11 @@ namespace GGJ_2026
         [SerializeField] private RectTransform currentTopMaskingStripImageRectTransform;
         [SerializeField] private RectTransform currentBottomMaskingStripImageRectTransform;
         [SerializeField] private RectTransform bottomMaskingStripLimitPoint;
+        [SerializeField] private Sound maskingSoundPrefab;
 
         private IEnumerator rollDownCoroutine;
         private float maskingStripImageYDifference;
+        private Sound maskingSound;
 
         public static Action<float> onAddedY;
 
@@ -22,6 +25,7 @@ namespace GGJ_2026
             Paw.onUpdatedPosition += OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
             MaskingTape.onSetState += OnMaskingTapeSetState;
+            Paw.onToggled += OnPawToggled;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -30,6 +34,7 @@ namespace GGJ_2026
             Paw.onUpdatedPosition -= OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
             MaskingTape.onSetState -= OnMaskingTapeSetState;
+            Paw.onToggled -= OnPawToggled;
         }
 
         private void Start()
@@ -62,6 +67,11 @@ namespace GGJ_2026
                 currentBottomMaskingStripImageRectTransform = tempCurrentTopMaskingStripImageRectTransform;
                 currentTopMaskingStripImageRectTransform.SetSiblingIndex(0);
             }
+            if(maskingSound == null)
+            {
+                maskingSound = GameManager.instance.audioManager.PlaySound(maskingSoundPrefab);
+            }
+            TapticManager.Impact(ImpactFeedback.Light);
             onAddedY?.Invoke(y);
         }
 
@@ -91,6 +101,14 @@ namespace GGJ_2026
             if(state == MaskingTape.State.Empty)
             {
                 Destroy(gameObject);
+            }
+        }
+
+        private void OnPawToggled(bool on)
+        {
+            if(!on)
+            {
+                maskingSound?.Stop();
             }
         }
     }

@@ -7,6 +7,7 @@ namespace GGJ_2026
     public class CatchHandler : MyMonoBehaviour, IEventSubscriberDeclarator
     {
 		[SerializeField] private Paw paw;
+		[SerializeField] private Sound onCaughtSoundPrefab;
 
         private IEnumerator watchCoroutine;
         private bool watching;
@@ -61,6 +62,7 @@ namespace GGJ_2026
 
         private void Catch()
         {
+			GameManager.instance.audioManager.PlaySound(onCaughtSoundPrefab);
             StopWatchCoroutine();
 			onCaught?.Invoke();
         }

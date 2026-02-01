@@ -2948,6 +2948,7 @@ MonoBehaviour:
   currentTopMaskingStripImageRectTransform: {fileID: 647235883}
   currentBottomMaskingStripImageRectTransform: {fileID: 1193232242}
   bottomMaskingStripLimitPoint: {fileID: 300907950}
+  maskingSoundPrefab: {fileID: 251992979899340133, guid: 64b5bd57f614246da83d4258d9a76a18, type: 3}
 --- !u!1 &932785145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,6 +5103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paw: {fileID: 1882038399}
+  onCaughtSoundPrefab: {fileID: 251992979899340133, guid: 099f2155f1112473cb3f1c201a8684ec, type: 3}
 --- !u!114 &1864750985
 MonoBehaviour:
   m_ObjectHideFlags: 0
