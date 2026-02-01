@@ -8,7 +8,7 @@ namespace GGJ_2026
     public class PersistentDataManager : Manager
     {
         [HideInInspector] public PersistentData persistentData = new();
-        [HideInInspector] public bool showedIntroThisPlaySession;
+        [HideInInspector] public int startedALevelThisSessionAmount;
 
         private string persistentDataPath;
 
@@ -61,6 +61,11 @@ namespace GGJ_2026
         private void SetupDefaultPersistentDataValues()
         {
             Save();
+        }
+
+        public bool IsFirstTimePlayingALevelThisSession()
+        {
+            return startedALevelThisSessionAmount == 1;
         }
     }
 }

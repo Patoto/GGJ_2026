@@ -28,6 +28,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
 			CatchHandler.onCaught += OnCatchHandlerCaught;
 			LevelHandler.onFinishedIntroTimeline += OnLevelHandlerFinishedIntroTimeline;
+			LevelHandler.onStartedMyStartCoroutine += OnLevelHandlerStartedMyStartCoroutine;
 		}
 
 		public virtual void UnsubscribeFromInitializeEvents()
@@ -37,6 +38,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
 			LevelHandler.onFinishedIntroTimeline -= OnLevelHandlerFinishedIntroTimeline;
+			LevelHandler.onStartedMyStartCoroutine -= OnLevelHandlerStartedMyStartCoroutine;
 		}
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
@@ -93,6 +95,14 @@ namespace GGJ_2026
 		{
 			canReceiveInputs = on;
 			onToggledCanReceiveInputs?.Invoke(on);
+		}
+
+        private void OnLevelHandlerStartedMyStartCoroutine()
+		{
+			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
+			{
+				ToggleCanReveiveInputs(true);
+			}
 		}
     }
 }

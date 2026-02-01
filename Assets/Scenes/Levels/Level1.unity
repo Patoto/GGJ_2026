@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fcf3bdb8b77e4d7e8421fe8862349fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 60011125}
   image: {fileID: 2013160431}
   paw: {fileID: 1882038399}
   playingSprite: {fileID: 21300000, guid: 24efd17a79d4247aeb21ee434a70e009, type: 3}

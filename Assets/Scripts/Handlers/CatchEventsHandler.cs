@@ -15,12 +15,14 @@ namespace GGJ_2026
 		{
 			CatchEvent.onFinished += OnCatchEventFinished;
 			Paw.onToggledCanReceiveInputs += OnPawToggledCanReceiveInputs;
+			LevelHandler.onFinishedTransitionInCoroutine += OnLevelHandlerFinishedTransitionInCoroutine;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			CatchEvent.onFinished -= OnCatchEventFinished;
 			Paw.onToggledCanReceiveInputs -= OnPawToggledCanReceiveInputs;
+			LevelHandler.onFinishedTransitionInCoroutine -= OnLevelHandlerFinishedTransitionInCoroutine;
         }
 
         protected override void Awake()
@@ -47,7 +49,15 @@ namespace GGJ_2026
 
         private void OnPawToggledCanReceiveInputs(bool on)
 		{
-			if (on && !invokedFirstCatchEvent)
+			if (on && GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession() && !invokedFirstCatchEvent)
+			{
+				InvokeNextCatchEvent();
+			}
+		}
+
+        private void OnLevelHandlerFinishedTransitionInCoroutine()
+		{
+			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
 			{
 				InvokeNextCatchEvent();
 			}

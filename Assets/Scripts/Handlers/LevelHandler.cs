@@ -10,16 +10,21 @@ namespace GGJ_2026
 		[SerializeField] private PlayableDirector introPlayableDirector;
 
         public static Action onFinishedIntroTimeline;
+        public static Action onStartedMyStartCoroutine;
+        public static Action onFinishedTransitionInCoroutine;
 
         private void Start()
         {
+			GameManager.instance.persistentDataManager.startedALevelThisSessionAmount++;
 			InvokeActionAfterSeconds(() => StartCoroutine(MyStartCoroutine()), 0.1f);
         }
 
         private IEnumerator MyStartCoroutine()
 		{
+			onStartedMyStartCoroutine?.Invoke();
 			yield return GameManager.instance.transitionsManager.TryToPlayTransitionInCoroutine();
-			if (!GameManager.instance.persistentDataManager.showedIntroThisPlaySession)
+			onFinishedTransitionInCoroutine?.Invoke();
+			if (GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
 			{
 				introPlayableDirector.Play();
 			}
@@ -27,7 +32,6 @@ namespace GGJ_2026
 
 		public void OnFinishedIntroTimeline()
 		{
-			GameManager.instance.persistentDataManager.showedIntroThisPlaySession = true;
 			onFinishedIntroTimeline?.Invoke();
 		}
     }

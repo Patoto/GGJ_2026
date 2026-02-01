@@ -13,6 +13,7 @@ namespace GGJ_2026
 			Caught
 		}
 
+		[SerializeField] private RectTransform rectTransform;
 		[SerializeField] private Image image;
 		[SerializeField] private Paw paw;
 		[SerializeField] private Sprite playingSprite;
@@ -25,6 +26,7 @@ namespace GGJ_2026
 			CatchHandler.onStartedWatchCoroutine += OnCatchHandlerStartedWatchCoroutine;
 			CatchHandler.onStoppedWatchCoroutine += OnCatchHandlerStoppedWatchCoroutine;
 			CatchHandler.onCaught += OnCatchHandlerCaught;
+			LevelHandler.onStartedMyStartCoroutine += OnLevelHandlerStartedMyStartCoroutine;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -33,6 +35,7 @@ namespace GGJ_2026
 			CatchHandler.onStartedWatchCoroutine -= OnCatchHandlerStartedWatchCoroutine;
 			CatchHandler.onStoppedWatchCoroutine -= OnCatchHandlerStoppedWatchCoroutine;
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
+			LevelHandler.onStartedMyStartCoroutine -= OnLevelHandlerStartedMyStartCoroutine;
         }
 
         private void OnCatchHandlerPawToggled(bool pawOn, bool catchHandlerWatching)
@@ -77,6 +80,14 @@ namespace GGJ_2026
         private void OnCatchHandlerCaught()
 		{
 			SetState(State.Caught);
+		}
+
+        private void OnLevelHandlerStartedMyStartCoroutine()
+		{
+			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
+			{
+				rectTransform.SetPositionX(0f);
+			}
 		}
     }
 }
