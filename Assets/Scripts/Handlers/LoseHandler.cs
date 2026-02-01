@@ -30,8 +30,11 @@ namespace GGJ_2026
 
         private void OnCatchHandlerCaught()
 		{
-			gameObject.SetActive(true);
-			StartCoroutine(OnCatchHandlerCatchedCoroutine());
+			if (this != null)
+			{
+				gameObject.SetActive(true);
+				StartCoroutine(OnCatchHandlerCatchedCoroutine());
+			}
 		}
 
         private IEnumerator OnCatchHandlerCatchedCoroutine()

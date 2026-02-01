@@ -26,7 +26,7 @@ namespace GGJ_2026
 
         private void OnMaskingTapeSetState(MaskingTape.State state)
 		{
-			if (state == MaskingTape.State.Empty)
+			if (this != null && state == MaskingTape.State.Empty)
 			{
 				GameManager.instance.StartCoroutine(WinCoroutine());
 			}
