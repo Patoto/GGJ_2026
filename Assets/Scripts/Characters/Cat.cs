@@ -57,7 +57,7 @@ namespace GGJ_2026
 
         private void OnCatchHandlerPawToggled(bool pawOn, bool catchHandlerWatching)
 		{
-			if (currentState != State.Caught)
+			if (currentState != State.Caught && currentState != State.Happy)
 			{
 				SetState(pawOn ? State.Playing : catchHandlerWatching ? State.Sleeping : State.Playing);
 			}
