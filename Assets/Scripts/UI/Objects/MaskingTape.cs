@@ -21,6 +21,7 @@ namespace GGJ_2026
 		[SerializeField] private Sprite emptySprite;
 
 		private float tapePercentageLeftAmount = 1f;
+		private State currentState;
 
         public static Action<State> onSetState;
 
@@ -36,27 +37,32 @@ namespace GGJ_2026
 
         private void OnMaskingStripAddedY(float y)
 		{
-			tapePercentageLeftAmount -= Mathf.Abs(y) * 0.00001f;
-			if (tapePercentageLeftAmount <= 0f)
+			if (currentState != State.Empty)
 			{
-				SetState(State.Empty);
-			}
-			else if (tapePercentageLeftAmount <= 0.33f)
-			{
-				SetState(State.Low);
-			}
-			else if (tapePercentageLeftAmount <= 0.66f)
-			{
-				SetState(State.Middle);
-			}
-			else
-			{
-				SetState(State.Full);
+				tapePercentageLeftAmount -= Mathf.Abs(y) * 0.0001f;
+				if (tapePercentageLeftAmount <= 0f)
+				{
+					tapePercentageLeftAmount = 0f;
+					SetState(State.Empty);
+				}
+				else if (tapePercentageLeftAmount <= 0.33f)
+				{
+					SetState(State.Low);
+				}
+				else if (tapePercentageLeftAmount <= 0.66f)
+				{
+					SetState(State.Middle);
+				}
+				else
+				{
+					SetState(State.Full);
+				}
 			}
 		}
 
         private void SetState(State state)
 		{
+			currentState = state;
             switch (state)
             {
                 case State.Full:

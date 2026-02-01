@@ -5,7 +5,7 @@ using UnityEngine.Playables;
 
 namespace GGJ_2026
 {
-	public class LevelHandler : MyMonoBehaviour
+	public class LevelHandler : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
 		[SerializeField] private PlayableDirector introPlayableDirector;
 
@@ -13,10 +13,19 @@ namespace GGJ_2026
         public static Action onStartedMyStartCoroutine;
         public static Action onFinishedTransitionInCoroutine;
 
-        private void Start()
+        public void SubscribeToEnableEvents()
+		{
+			TitleHandler.onDeactivated += OnTitleHandlerDeactivated;
+		}
+
+        public void UnsubscribeFromEnableEvents()
         {
-			GameManager.instance.persistentDataManager.startedALevelThisSessionAmount++;
-			InvokeActionAfterSeconds(() => StartCoroutine(MyStartCoroutine()), 0.1f);
+			TitleHandler.onDeactivated -= OnTitleHandlerDeactivated;
+        }
+
+        private void OnTitleHandlerDeactivated()
+        {
+			StartCoroutine(MyStartCoroutine());
         }
 
         private IEnumerator MyStartCoroutine()
