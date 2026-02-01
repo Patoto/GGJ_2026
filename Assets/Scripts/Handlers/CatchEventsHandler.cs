@@ -13,6 +13,8 @@ namespace GGJ_2026
 		private List<CatchEvent> catchEventsList = new();
         private bool invokedFirstCatchEvent;
 
+        public static Action onAboutToInvokeFirstCatchEvent;
+
         public void SubscribeToEnableEvents()
 		{
 			CatchEvent.onFinished += OnCatchEventFinished;
@@ -37,6 +39,10 @@ namespace GGJ_2026
 
         private void InvokeNextCatchEvent()
         {
+			if (!invokedFirstCatchEvent)
+			{
+				onAboutToInvokeFirstCatchEvent?.Invoke();
+			}
             StopInvokeStartRandomUnusedCatchEventCoroutine();
             invokeStartRandomUnusedCatchEventCoroutine = InvokeActionAfterSeconds(StartRandomUnusedCatchEvent, UnityEngine.Random.Range(2.5f, 5f));
             invokedFirstCatchEvent = true;
