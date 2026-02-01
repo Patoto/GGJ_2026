@@ -9,6 +9,7 @@ namespace GGJ_2026
 	public class WinHandler : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
 		[SerializeField] private Image backgroundImage;
+		[SerializeField] private Sound winMusicSoundPrefab;
 
         public void SubscribeToEnableEvents() { }
 
@@ -36,8 +37,10 @@ namespace GGJ_2026
 		{
 			gameObject.SetActive(true);
 			yield return new WaitForSeconds(1.5f);
+			GameManager.instance.audioManager.PlayMusic(winMusicSoundPrefab);
 			yield return backgroundImage.DOFade(1f, 0.25f).WaitForCompletion();
-			yield return new WaitForSeconds(3f);
+			yield return new WaitForSeconds(5f);
+			GameManager.instance.audioManager.currentMusicSound.FadeOutAndDestroy();
 			yield return GameManager.instance.transitionsManager.PlayTransitionOutCoroutine();
 			GameManager.instance.scenesManager.ResetScene();
 		}

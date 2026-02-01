@@ -5050,6 +5050,7 @@ MonoBehaviour:
   jumpscareBackgroundCanvasGroup: {fileID: 385413064}
   jumpscareMom: {fileID: 1065324230}
   gameOverBackground: {fileID: 1693133848}
+  loseMusicSoundPrefab: {fileID: 5193975438082282184, guid: 12ab4e1d590a14a85bd19bd39dc33a89, type: 3}
 --- !u!1 &1864750982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5466,6 +5467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1039856313}
+  winMusicSoundPrefab: {fileID: 5193975438082282184, guid: 7c9a30f66c1404ee49ef5ef170d8d1ea, type: 3}
 --- !u!1 &1996076223
 GameObject:
   m_ObjectHideFlags: 0
