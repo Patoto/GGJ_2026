@@ -91,7 +91,11 @@ namespace GGJ_2026
 
         private void OnLevelHandlerFinishedIntroTimeline()
 		{
-			GameManager.instance.InvokeActionAfterSeconds(() => ToggleCanReveiveInputs(true), 0.5f);
+			GameManager.instance.InvokeActionAfterSeconds(() =>
+			{
+				ToggleCanReveiveInputs(true);
+				Toggle(true);
+			}, 0.25f);
 		}
 
 		private void ToggleCanReveiveInputs(bool on)
