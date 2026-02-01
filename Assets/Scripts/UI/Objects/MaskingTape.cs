@@ -6,7 +6,7 @@ namespace GGJ_2026
 {
 	public class MaskingTape : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
-		private enum State
+		public enum State
 		{
 			Full,
 			Middle,
@@ -20,7 +20,9 @@ namespace GGJ_2026
 		[SerializeField] private Sprite lowSprite;
 		[SerializeField] private Sprite emptySprite;
 
-		private float tapePercentageLeftAmount = 100f;
+		private float tapePercentageLeftAmount = 1f;
+
+        public static Action<State> onSetState;
 
         public void SubscribeToEnableEvents()
 		{
@@ -34,7 +36,7 @@ namespace GGJ_2026
 
         private void OnMaskingStripAddedY(float y)
 		{
-			tapePercentageLeftAmount -= Mathf.Abs(y) * 0.1f;
+			tapePercentageLeftAmount -= Mathf.Abs(y) * 0.00005f;
 			if (tapePercentageLeftAmount <= 0f)
 			{
 				SetState(State.Empty);
@@ -70,6 +72,7 @@ namespace GGJ_2026
                     SetSprite(emptySprite);
                     break;
             }
+			onSetState?.Invoke(state);
         }
 
         private void SetSprite(Sprite sprite)
