@@ -84,7 +84,10 @@ namespace GGJ_2026
 
         private void DestroyMe()
         {
-            Destroy(gameObject);
+            if (this != null)
+            {
+                Destroy(gameObject);
+            }
         }
 
         [Button]
