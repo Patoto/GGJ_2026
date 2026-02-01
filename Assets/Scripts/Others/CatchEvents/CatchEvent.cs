@@ -15,11 +15,13 @@ namespace GGJ_2026
         public void SubscribeToEnableEvents()
 		{
 			CatchHandler.onCaught += OnCatchHandlerCaught;
+			LoseHandler.onAboutToResetScene += OnLoseHandlerAboutToResetScene;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
+			LoseHandler.onAboutToResetScene -= OnLoseHandlerAboutToResetScene;
         }
 
         public void StartCatchEvent()
@@ -45,6 +47,11 @@ namespace GGJ_2026
         private void OnCatchHandlerCaught()
 		{
 			playableDirector.Pause();
+		}
+
+        private void OnLoseHandlerAboutToResetScene()
+		{
+			playableDirector.Stop();
 		}
     }
 }

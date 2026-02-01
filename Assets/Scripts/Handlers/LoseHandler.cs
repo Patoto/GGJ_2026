@@ -12,6 +12,9 @@ namespace GGJ_2026
 		[SerializeField] private Image jumpscareMom;
 		[SerializeField] private Image gameOverBackground;
 
+        public static Action onAboutToShowJumpscareMom;
+        public static Action onAboutToResetScene;
+
         public void SubscribeToEnableEvents() { }
 
         public void UnsubscribeFromEnableEvents() { }
@@ -35,13 +38,14 @@ namespace GGJ_2026
         private IEnumerator OnCatchHandlerCatchedCoroutine()
 		{
 			yield return new WaitForSeconds(1f);
+			onAboutToShowJumpscareMom?.Invoke();
 			jumpscareBackgroundCanvasGroup.DoToggleFadeAndInteractableTween(true, 0.25f);
 			jumpscareMom.transform.DOScale(5f, 0.5f).SetEase(Ease.Linear);
 			yield return new WaitForSeconds(0.4f);
 			gameOverBackground.DOFade(1f, 0.25f);
 			yield return new WaitForSeconds(3f);
 			yield return GameManager.instance.transitionsManager.PlayTransitionOutCoroutine();
-			yield return new WaitForSeconds(0.1f);
+			onAboutToResetScene?.Invoke();
 			GameManager.instance.scenesManager.ResetScene();
 		}
     }
