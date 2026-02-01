@@ -36,7 +36,7 @@ namespace GGJ_2026
 
         private void OnMaskingStripAddedY(float y)
 		{
-			tapePercentageLeftAmount -= Mathf.Abs(y) * 0.00005f;
+			tapePercentageLeftAmount -= Mathf.Abs(y) * 0.00001f;
 			if (tapePercentageLeftAmount <= 0f)
 			{
 				SetState(State.Empty);

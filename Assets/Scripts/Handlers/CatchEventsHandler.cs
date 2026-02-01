@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +9,16 @@ namespace GGJ_2026
 	{
 		[SerializeField] private Transform catchEventsParent;
 		
+        private IEnumerator invokeStartRandomUnusedCatchEventCoroutine;
 		private List<CatchEvent> catchEventsList = new();
-		private bool invokedFirstCatchEvent;
+        private bool invokedFirstCatchEvent;
 
         public void SubscribeToEnableEvents()
 		{
 			CatchEvent.onFinished += OnCatchEventFinished;
 			Paw.onToggledCanReceiveInputs += OnPawToggledCanReceiveInputs;
 			LevelHandler.onFinishedTransitionInCoroutine += OnLevelHandlerFinishedTransitionInCoroutine;
+			MaskingTape.onSetState += OnMaskingTapeSetState;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -23,6 +26,7 @@ namespace GGJ_2026
 			CatchEvent.onFinished -= OnCatchEventFinished;
 			Paw.onToggledCanReceiveInputs -= OnPawToggledCanReceiveInputs;
 			LevelHandler.onFinishedTransitionInCoroutine -= OnLevelHandlerFinishedTransitionInCoroutine;
+			MaskingTape.onSetState -= OnMaskingTapeSetState;
         }
 
         protected override void Awake()
@@ -32,10 +36,16 @@ namespace GGJ_2026
         }
 
         private void InvokeNextCatchEvent()
-		{
-			InvokeActionAfterSeconds(StartRandomUnusedCatchEvent, UnityEngine.Random.Range(2.5f, 5f));
-			invokedFirstCatchEvent = true;
-		}
+        {
+            StopInvokeStartRandomUnusedCatchEventCoroutine();
+            invokeStartRandomUnusedCatchEventCoroutine = InvokeActionAfterSeconds(StartRandomUnusedCatchEvent, UnityEngine.Random.Range(2.5f, 5f));
+            invokedFirstCatchEvent = true;
+        }
+
+        private void StopInvokeStartRandomUnusedCatchEventCoroutine()
+        {
+            StopCoroutine(invokeStartRandomUnusedCatchEventCoroutine);
+        }
 
         private void StartRandomUnusedCatchEvent()
 		{
@@ -60,6 +70,14 @@ namespace GGJ_2026
 			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
 			{
 				InvokeNextCatchEvent();
+			}
+		}
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
+		{
+			if (state == MaskingTape.State.Empty)
+			{
+				StopInvokeStartRandomUnusedCatchEventCoroutine();
 			}
 		}
     }

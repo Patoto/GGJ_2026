@@ -21,6 +21,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDown += OnLevelPointerListenerPointerDown;
             Paw.onUpdatedPosition += OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp += OnLevelPointerListenerPointerUp;
+            MaskingTape.onSetState += OnMaskingTapeSetState;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -28,6 +29,7 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDown -= OnLevelPointerListenerPointerDown;
             Paw.onUpdatedPosition -= OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
+            MaskingTape.onSetState -= OnMaskingTapeSetState;
         }
 
         private void Start()
@@ -83,5 +85,13 @@ namespace GGJ_2026
 				yield return null;
 			}
 		}
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
+        {
+            if(state == MaskingTape.State.Empty)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

@@ -15,11 +15,13 @@ namespace GGJ_2026
         public void SubscribeToEnableEvents()
 		{
 			CatchHandler.onCaught += OnCatchHandlerCaught;
+			MaskingTape.onSetState += OnMaskingTapeSetState;
 		}
 
         public void UnsubscribeFromEnableEvents()
         {
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
+			MaskingTape.onSetState -= OnMaskingTapeSetState;
         }
 
         public void StartCatchEvent()
@@ -43,8 +45,21 @@ namespace GGJ_2026
 		}
 
         private void OnCatchHandlerCaught()
+        {
+            StopPlayableDirector();
+        }
+
+        private void StopPlayableDirector()
+        {
+            playableDirector.Stop();
+        }
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
 		{
-			playableDirector.Stop();
+			if (state == MaskingTape.State.Empty)
+			{
+				StopPlayableDirector();
+			}
 		}
     }
 }

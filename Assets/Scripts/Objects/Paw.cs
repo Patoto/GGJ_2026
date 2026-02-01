@@ -29,6 +29,7 @@ namespace GGJ_2026
 			CatchHandler.onCaught += OnCatchHandlerCaught;
 			LevelHandler.onFinishedIntroTimeline += OnLevelHandlerFinishedIntroTimeline;
 			LevelHandler.onStartedMyStartCoroutine += OnLevelHandlerStartedMyStartCoroutine;
+			MaskingTape.onSetState += OnMaskingTapeSetState;
 		}
 
 		public virtual void UnsubscribeFromInitializeEvents()
@@ -39,6 +40,7 @@ namespace GGJ_2026
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
 			LevelHandler.onFinishedIntroTimeline -= OnLevelHandlerFinishedIntroTimeline;
 			LevelHandler.onStartedMyStartCoroutine -= OnLevelHandlerStartedMyStartCoroutine;
+			MaskingTape.onSetState -= OnMaskingTapeSetState;
 		}
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
@@ -103,6 +105,15 @@ namespace GGJ_2026
 			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
 			{
 				ToggleCanReveiveInputs(true);
+			}
+		}
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
+		{
+			if (state == MaskingTape.State.Empty)
+			{
+				ToggleCanReveiveInputs(false);
+				Toggle(false);
 			}
 		}
     }

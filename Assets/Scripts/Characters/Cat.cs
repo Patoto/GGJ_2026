@@ -11,7 +11,8 @@ namespace GGJ_2026
 		{
 			Playing,
 			Sleeping,
-			Caught
+			Caught,
+			Happy
 		}
 
 		[SerializeField] private RectTransform rectTransform;
@@ -21,6 +22,7 @@ namespace GGJ_2026
 		[SerializeField] private Sprite sleepingSprite;
 		[SerializeField] private Sprite caughtSprite1;
 		[SerializeField] private Sprite caughtSprite2;
+		[SerializeField] private Sprite happySprite;
 		[SerializeField] private Image sleepingFaceImage;
 		[SerializeField] private Sprite sleepingFaceSprite1;
 		[SerializeField] private Sprite sleepingFaceSprite2;
@@ -39,6 +41,7 @@ namespace GGJ_2026
 			CatchHandler.onCaught += OnCatchHandlerCaught;
 			LevelHandler.onStartedMyStartCoroutine += OnLevelHandlerStartedMyStartCoroutine;
 			LoseHandler.onAboutToShowJumpscareMom += OnLoseHandlerAboutToShowJumpscareMom;
+			MaskingTape.onSetState += OnMaskingTapeSetState;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -49,6 +52,7 @@ namespace GGJ_2026
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
 			LevelHandler.onStartedMyStartCoroutine -= OnLevelHandlerStartedMyStartCoroutine;
 			LoseHandler.onAboutToShowJumpscareMom -= OnLoseHandlerAboutToShowJumpscareMom;
+			MaskingTape.onSetState -= OnMaskingTapeSetState;
         }
 
         private void OnCatchHandlerPawToggled(bool pawOn, bool catchHandlerWatching)
@@ -95,6 +99,9 @@ namespace GGJ_2026
                 case State.Caught:
 					SetSprite(caughtSprite1);
                     break;
+				case State.Happy:
+					SetSprite(happySprite);
+					break;
             }
         }
 
@@ -126,6 +133,14 @@ namespace GGJ_2026
 		{
 			SetSprite(caughtSprite2);
 			animator.PlayAnimationFromStart(SHAKE_ANIMATION_NAME);
+		}
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
+		{
+			if (state == MaskingTape.State.Empty)
+			{
+				SetState(State.Happy);
+			}
 		}
     }
 }
