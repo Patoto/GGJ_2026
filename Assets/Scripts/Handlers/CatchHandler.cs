@@ -21,6 +21,7 @@ namespace GGJ_2026
 			CatchEvent.onStartedWatching += OnCatchEventStartedWatching;
 			CatchEvent.onStoppedWatching += OnCatchEventStoppedWatching;
 			Paw.onToggled += OnPawToggled;
+			TimeHandler.onTimeFinished += OnTimeHandlerTimeFinished;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -28,6 +29,7 @@ namespace GGJ_2026
 			CatchEvent.onStartedWatching -= OnCatchEventStartedWatching;
 			CatchEvent.onStoppedWatching -= OnCatchEventStoppedWatching;
 			Paw.onToggled -= OnPawToggled;
+			TimeHandler.onTimeFinished -= OnTimeHandlerTimeFinished;
         }
 
         private void OnCatchEventStartedWatching()
@@ -71,6 +73,11 @@ namespace GGJ_2026
         private void OnPawToggled(bool on)
 		{
 			onPawToggled?.Invoke(on, watching);
+		}
+
+        private void OnTimeHandlerTimeFinished()
+		{
+			Catch();
 		}
     }
 }

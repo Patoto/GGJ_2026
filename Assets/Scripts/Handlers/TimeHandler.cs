@@ -8,6 +8,7 @@ namespace GGJ_2026
 	public class TimeHandler : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
 		[SerializeField] private TextMeshProUGUI timeText;
+		[SerializeField] private GameObject timeOutGameObject;
 
 		private int currentSecondsRemaining = 120;
 
@@ -20,11 +21,13 @@ namespace GGJ_2026
         public virtual void SubscribeToInitializeEvents()
 		{
 			CatchEventsHandler.onAboutToInvokeFirstCatchEvent += OnCatchEventsHandlerAboutToInvokeFirstCatchEvent;
+			LoseHandler.onAboutToShowJumpscareMom += OnLoseHandlerAboutToShowJumpscareMom;
 		}
 
         public virtual void UnsubscribeFromInitializeEvents()
 		{
 			CatchEventsHandler.onAboutToInvokeFirstCatchEvent -= OnCatchEventsHandlerAboutToInvokeFirstCatchEvent;
+			LoseHandler.onAboutToShowJumpscareMom -= OnLoseHandlerAboutToShowJumpscareMom;
 		}
 
         private void Start()
@@ -39,19 +42,31 @@ namespace GGJ_2026
         }
 
         private IEnumerator UpdateTimeCoroutine()
-		{
-			while (currentSecondsRemaining >= 0)
-			{
-				yield return new WaitForSeconds(1f);
-				currentSecondsRemaining--;
-				UpdateText();
-			}
-			onTimeFinished?.Invoke();
-		}
+        {
+            while (currentSecondsRemaining >= 0)
+            {
+                yield return new WaitForSeconds(1f);
+                currentSecondsRemaining--;
+                UpdateText();
+            }
+            OnTimeFinished();
+        }
+
+        private void OnTimeFinished()
+        {
+			timeOutGameObject.SetActive(true);
+			gameObject.SetActive(false);
+            onTimeFinished?.Invoke();
+        }
 
         private void UpdateText()
 		{
 			timeText.text = currentSecondsRemaining.ToMinutesFormattedString();
+		}
+
+        private void OnLoseHandlerAboutToShowJumpscareMom()
+		{
+			timeOutGameObject.SetActive(false);
 		}
     }
 }
