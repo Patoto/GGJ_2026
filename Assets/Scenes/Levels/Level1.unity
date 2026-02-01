@@ -5051,6 +5051,7 @@ MonoBehaviour:
   jumpscareMom: {fileID: 1065324230}
   gameOverBackground: {fileID: 1693133848}
   loseMusicSoundPrefab: {fileID: 5193975438082282184, guid: 12ab4e1d590a14a85bd19bd39dc33a89, type: 3}
+  jumpscareSoundPrefab: {fileID: 251992979899340133, guid: 35d1554bcaa59477f995177a3feea301, type: 3}
 --- !u!1 &1864750982
 GameObject:
   m_ObjectHideFlags: 0

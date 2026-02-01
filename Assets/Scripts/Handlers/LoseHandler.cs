@@ -12,6 +12,7 @@ namespace GGJ_2026
 		[SerializeField] private Image jumpscareMom;
 		[SerializeField] private Image gameOverBackground;
 		[SerializeField] private Sound loseMusicSoundPrefab;
+		[SerializeField] private Sound jumpscareSoundPrefab;
 
         public static Action onAboutToShowJumpscareMom;
 
@@ -44,6 +45,7 @@ namespace GGJ_2026
 			onAboutToShowJumpscareMom?.Invoke();
 			jumpscareBackgroundCanvasGroup.DoToggleFadeAndInteractableTween(true, 0.25f);
 			jumpscareMom.transform.DOScale(5f, 0.5f).SetEase(Ease.Linear);
+			GameManager.instance.audioManager.PlaySound(jumpscareSoundPrefab);
 			yield return new WaitForSeconds(0.4f);
 			gameOverBackground.DOFade(1f, 0.25f);
 			GameManager.instance.audioManager.PlayMusic(loseMusicSoundPrefab);
