@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 1038941613}
-  timeOutGameObject: {fileID: 0}
+  timeOutGameObject: {fileID: 806279435}
 --- !u!1 &60011124
 GameObject:
   m_ObjectHideFlags: 0

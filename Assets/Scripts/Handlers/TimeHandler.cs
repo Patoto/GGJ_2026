@@ -22,12 +22,20 @@ namespace GGJ_2026
 		{
 			CatchEventsHandler.onAboutToInvokeFirstCatchEvent += OnCatchEventsHandlerAboutToInvokeFirstCatchEvent;
 			LoseHandler.onAboutToShowJumpscareMom += OnLoseHandlerAboutToShowJumpscareMom;
+			CatchHandler.onCaught += OnCatchHandlerCaught;
 		}
 
         public virtual void UnsubscribeFromInitializeEvents()
 		{
 			CatchEventsHandler.onAboutToInvokeFirstCatchEvent -= OnCatchEventsHandlerAboutToInvokeFirstCatchEvent;
 			LoseHandler.onAboutToShowJumpscareMom -= OnLoseHandlerAboutToShowJumpscareMom;
+			CatchHandler.onCaught -= OnCatchHandlerCaught;
+		}
+
+        private void OnCatchHandlerCaught()
+		{
+			gameObject.SetActive(false);
+			StopAllCoroutines();
 		}
 
         private void Start()
