@@ -42,7 +42,7 @@ namespace GGJ_2026
 		{
 			if (currentState != State.Empty)
 			{
-				tapePercentageLeftAmount -= Mathf.Abs(y) * 0.001f;
+				tapePercentageLeftAmount -= Mathf.Abs(y) * 0.00001f;
 				if (tapePercentageLeftAmount <= 0f)
 				{
 					tapePercentageLeftAmount = 0f;
