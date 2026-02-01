@@ -14,6 +14,8 @@ namespace GGJ_2026
         private IEnumerator rollDownCoroutine;
         private float maskingStripImageYDifference;
 
+        public static Action<float> onAddedY;
+
         public void SubscribeToEnableEvents()
 		{
 			LevelPointerListener.onPointerDown += OnLevelPointerListenerPointerDown;
@@ -58,6 +60,7 @@ namespace GGJ_2026
                 currentBottomMaskingStripImageRectTransform = tempCurrentTopMaskingStripImageRectTransform;
                 currentTopMaskingStripImageRectTransform.SetSiblingIndex(0);
             }
+            onAddedY?.Invoke(y);
         }
 
         private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
