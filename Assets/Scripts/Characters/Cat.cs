@@ -19,12 +19,17 @@ namespace GGJ_2026
 		[SerializeField] private Paw paw;
 		[SerializeField] private Sprite playingSprite;
 		[SerializeField] private Sprite sleepingSprite;
-		[SerializeField] private Sprite caughtSprite;
+		[SerializeField] private Sprite caughtSprite1;
+		[SerializeField] private Sprite caughtSprite2;
 		[SerializeField] private Image sleepingFaceImage;
 		[SerializeField] private Sprite sleepingFaceSprite1;
 		[SerializeField] private Sprite sleepingFaceSprite2;
+		[SerializeField] private Animator animator;
 
         private IEnumerator sleepLookCoroutine;
+		private State currentState;
+
+		private const string SHAKE_ANIMATION_NAME = "Shake";
 
         public void SubscribeToEnableEvents()
 		{
@@ -33,6 +38,7 @@ namespace GGJ_2026
 			CatchHandler.onStoppedWatchCoroutine += OnCatchHandlerStoppedWatchCoroutine;
 			CatchHandler.onCaught += OnCatchHandlerCaught;
 			LevelHandler.onStartedMyStartCoroutine += OnLevelHandlerStartedMyStartCoroutine;
+			LoseHandler.onAboutToShowJumpscareMom += OnLoseHandlerAboutToShowJumpscareMom;
 		}
 
         public void UnsubscribeFromEnableEvents()
@@ -42,11 +48,15 @@ namespace GGJ_2026
 			CatchHandler.onStoppedWatchCoroutine -= OnCatchHandlerStoppedWatchCoroutine;
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
 			LevelHandler.onStartedMyStartCoroutine -= OnLevelHandlerStartedMyStartCoroutine;
+			LoseHandler.onAboutToShowJumpscareMom -= OnLoseHandlerAboutToShowJumpscareMom;
         }
 
         private void OnCatchHandlerPawToggled(bool pawOn, bool catchHandlerWatching)
 		{
-			SetState(pawOn ? State.Playing : catchHandlerWatching ? State.Sleeping : State.Playing);
+			if (currentState != State.Caught)
+			{
+				SetState(pawOn ? State.Playing : catchHandlerWatching ? State.Sleeping : State.Playing);
+			}
 		}
 
 		private void SetSprite(Sprite sprite)
@@ -69,6 +79,7 @@ namespace GGJ_2026
 
 		private void SetState(State state)
 		{
+			currentState = state;
 			sleepingFaceImage.gameObject.SetActive(false);
 			StopCoroutine(sleepLookCoroutine);
             switch (state)
@@ -82,7 +93,7 @@ namespace GGJ_2026
 					sleepLookCoroutine = StartCoroutine(SleepLookCoroutine());
                     break;
                 case State.Caught:
-					SetSprite(caughtSprite);
+					SetSprite(caughtSprite1);
                     break;
             }
         }
@@ -109,6 +120,12 @@ namespace GGJ_2026
 			{
 				rectTransform.SetPositionX(0f);
 			}
+		}
+
+        private void OnLoseHandlerAboutToShowJumpscareMom()
+		{
+			SetSprite(caughtSprite2);
+			animator.PlayAnimationFromStart(SHAKE_ANIMATION_NAME);
 		}
     }
 }

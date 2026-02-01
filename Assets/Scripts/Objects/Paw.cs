@@ -78,6 +78,7 @@ namespace GGJ_2026
         private void OnCatchHandlerCaught()
 		{
 			ToggleCanReveiveInputs(false);
+			Toggle(false);
 		}
 
 		private void Toggle(bool on)
