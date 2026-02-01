@@ -27,6 +27,7 @@ namespace GGJ_2026
 
 		public void OnFinishedIntroTimeline()
 		{
+			GameManager.instance.persistentDataManager.showedIntroThisPlaySession = true;
 			onFinishedIntroTimeline?.Invoke();
 		}
     }
