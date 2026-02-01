@@ -18,11 +18,13 @@ namespace GGJ_2026
         public void SubscribeToEnableEvents()
         {
             MaskingStrip.onAddedY += OnMaskingStripAddedY;
+            MaskingTape.onSetState += OnMaskingTapeSetState;
         }
 
         public void UnsubscribeFromEnableEvents()
         {            
             MaskingStrip.onAddedY -= OnMaskingStripAddedY;
+            MaskingTape.onSetState -= OnMaskingTapeSetState;
         }
 
         private void Start()
@@ -43,6 +45,14 @@ namespace GGJ_2026
                 RectTransform tempCurrentTopMaskingStripImageRectTransform = currentTopMaskingBaseHighlightsImageRectTransform;
                 currentTopMaskingBaseHighlightsImageRectTransform = currentBottomMaskingBaseHighlightsImageRectTransform;
                 currentBottomMaskingBaseHighlightsImageRectTransform = tempCurrentTopMaskingStripImageRectTransform;
+            }
+        }
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
+        {
+            if (state == MaskingTape.State.Empty)
+            {
+                gameObject.SetActive(false);
             }
         }
     }
