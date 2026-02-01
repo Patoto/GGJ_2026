@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,11 @@ namespace GGJ_2026
 		[SerializeField] private Sprite playingSprite;
 		[SerializeField] private Sprite sleepingSprite;
 		[SerializeField] private Sprite caughtSprite;
+		[SerializeField] private Image sleepingFaceImage;
+		[SerializeField] private Sprite sleepingFaceSprite1;
+		[SerializeField] private Sprite sleepingFaceSprite2;
+
+        private IEnumerator sleepLookCoroutine;
 
         public void SubscribeToEnableEvents()
 		{
@@ -63,6 +69,8 @@ namespace GGJ_2026
 
 		private void SetState(State state)
 		{
+			sleepingFaceImage.gameObject.SetActive(false);
+			StopCoroutine(sleepLookCoroutine);
             switch (state)
             {
                 case State.Playing:
@@ -70,12 +78,25 @@ namespace GGJ_2026
                     break;
                 case State.Sleeping:
 					SetSprite(sleepingSprite);
+					sleepingFaceImage.gameObject.SetActive(true);
+					sleepLookCoroutine = StartCoroutine(SleepLookCoroutine());
                     break;
                 case State.Caught:
 					SetSprite(caughtSprite);
                     break;
             }
         }
+
+        private IEnumerator SleepLookCoroutine()
+		{
+			sleepingFaceImage.sprite = sleepingFaceSprite1;
+			yield return new WaitForSeconds(1f);
+			while (true)
+			{
+				sleepingFaceImage.sprite = sleepingFaceImage.sprite == sleepingFaceSprite1 ? sleepingFaceSprite2 : sleepingFaceSprite1;
+				yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 0.4f));
+			}
+		}
 
         private void OnCatchHandlerCaught()
 		{
