@@ -78,6 +78,7 @@ namespace GGJ_2026
                     break;
                 case State.Empty:
                     SetSprite(emptySprite);
+					transform.DoPunchSequence();
 					onBecameEmptyUIParticle.Play();
                     break;
             }

@@ -36,7 +36,8 @@ namespace GGJ_2026
         private IEnumerator WinCoroutine()
 		{
 			gameObject.SetActive(true);
-			yield return new WaitForSeconds(1.5f);
+			GameManager.instance.audioManager.currentMusicSound.Stop();
+			yield return new WaitForSeconds(2f);
 			GameManager.instance.audioManager.PlayMusic(winMusicSoundPrefab);
 			yield return backgroundImage.DOFade(1f, 0.25f).WaitForCompletion();
 			yield return new WaitForSeconds(5f);
