@@ -849,7 +849,7 @@ PlayerSettings:
     WebGL: DOTWEEN
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
-    iPhone: DOTWEEN;ASSET_INVENTORY
+    iPhone: DOTWEEN;ASSET_INVENTORY;UNITY_PIPELINE_URP
     tvOS: DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
