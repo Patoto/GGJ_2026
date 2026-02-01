@@ -1,4 +1,5 @@
 using System;
+using Coffee.UIExtensions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,7 @@ namespace GGJ_2026
 		[SerializeField] private Sprite middleSprite;
 		[SerializeField] private Sprite lowSprite;
 		[SerializeField] private Sprite emptySprite;
+		[SerializeField] private UIParticle onBecameEmptyUIParticle;
 
 		private float tapePercentageLeftAmount = 1f;
 		private State currentState;
@@ -76,6 +78,7 @@ namespace GGJ_2026
                     break;
                 case State.Empty:
                     SetSprite(emptySprite);
+					onBecameEmptyUIParticle.Play();
                     break;
             }
 			onSetState?.Invoke(state);
