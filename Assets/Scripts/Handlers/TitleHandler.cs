@@ -1,4 +1,5 @@
 using System;
+using TapticPlugin;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -35,6 +36,7 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
         {
+			TapticManager.Impact(ImpactFeedback.Medium);
             Deactivate();
         }
 
