@@ -27,6 +27,7 @@ namespace GGJ_2026
         public void StartCatchEvent()
 		{
 			playableDirector.Play();
+			playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(UnityEngine.Random.Range(1f, 2f));
 		}
 
         public void StartWatching()
