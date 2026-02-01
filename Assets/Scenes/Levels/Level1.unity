@@ -5126,6 +5126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introPlayableDirector: {fileID: 1992344289}
+  musicSound: {fileID: 5193975438082282184, guid: 5244f6d38a1cb4256af3be56a5314e39, type: 3}
 --- !u!1 &1882038397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5515,6 +5516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9435b0a8bca749428444762fa6d67e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSound: {fileID: 5193975438082282184, guid: e6a51aa6d2e784eb786202b6c02d86c8, type: 3}
 --- !u!1 &2013160429
 GameObject:
   m_ObjectHideFlags: 0

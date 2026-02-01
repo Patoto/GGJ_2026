@@ -60,6 +60,7 @@ namespace GGJ_2026
 
         private void SetupDefaultPersistentDataValues()
         {
+            persistentData.ToggleAudioOn(true);
             Save();
         }
 

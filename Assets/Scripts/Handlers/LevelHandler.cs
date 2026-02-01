@@ -8,6 +8,7 @@ namespace GGJ_2026
 	public class LevelHandler : MyMonoBehaviour, IEventSubscriberDeclarator
 	{
 		[SerializeField] private PlayableDirector introPlayableDirector;
+		[SerializeField] private Sound musicSound;
 
         public static Action onFinishedIntroTimeline;
         public static Action onStartedMyStartCoroutine;
@@ -37,10 +38,20 @@ namespace GGJ_2026
 			{
 				introPlayableDirector.Play();
 			}
-		}
+			else
+            {
+                PlayMusic();
+            }
+        }
 
-		public void OnFinishedIntroTimeline()
+        private void PlayMusic()
+        {
+            GameManager.instance.audioManager.PlayMusic(musicSound);
+        }
+
+        public void OnFinishedIntroTimeline()
 		{
+			PlayMusic();
 			onFinishedIntroTimeline?.Invoke();
 		}
     }

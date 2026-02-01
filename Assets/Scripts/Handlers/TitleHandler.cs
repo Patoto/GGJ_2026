@@ -6,6 +6,8 @@ namespace GGJ_2026
 {
     public class TitleHandler : MyMonoBehaviour, IEventSubscriberDeclarator
     {
+		[SerializeField] private Sound musicSound;
+
         public static Action onDeactivated;
 
         public void SubscribeToEnableEvents()
@@ -21,7 +23,11 @@ namespace GGJ_2026
         private void Start()
         {
             GameManager.instance.persistentDataManager.startedALevelThisSessionAmount++;
-			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
+			if (GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
+			{
+				GameManager.instance.audioManager.PlayMusic(musicSound);
+			}
+			else
 			{
 				Deactivate();
 			}
