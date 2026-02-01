@@ -7,7 +7,12 @@ namespace GGJ_2026
 {
     public class MaskingStrip : MyMonoBehaviour, IEventSubscriberDeclarator
     {
+        [SerializeField] private RectTransform currentTopMaskingStripImageRectTransform;
+        [SerializeField] private RectTransform currentBottomMaskingStripImageRectTransform;
+        [SerializeField] private RectTransform bottomMaskingStripLimitPoint;
+
         private IEnumerator rollDownCoroutine;
+        private float maskingStripImageYDifference;
 
         public void SubscribeToEnableEvents()
 		{
@@ -21,6 +26,11 @@ namespace GGJ_2026
 			LevelPointerListener.onPointerDown -= OnLevelPointerListenerPointerDown;
             Paw.onUpdatedPosition -= OnPawUpdatedPosition;
             LevelPointerListener.onPointerUp -= OnLevelPointerListenerPointerUp;
+        }
+
+        private void Start()
+        {
+            maskingStripImageYDifference = currentTopMaskingStripImageRectTransform.position.y - currentBottomMaskingStripImageRectTransform.position.y;
         }
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
@@ -39,7 +49,15 @@ namespace GGJ_2026
 
         private void AddY(float y)
         {
-            transform.SetLocalPositionY(Mathf.Max(transform.localPosition.y + y, 10f));
+            transform.SetLocalPositionY(transform.localPosition.y + y);
+            if(currentBottomMaskingStripImageRectTransform.position.y < bottomMaskingStripLimitPoint.position.y)
+            {
+                currentBottomMaskingStripImageRectTransform.SetPositionY(currentBottomMaskingStripImageRectTransform.position.y + (maskingStripImageYDifference * 2f));
+                RectTransform tempCurrentTopMaskingStripImageRectTransform = currentTopMaskingStripImageRectTransform;
+                currentTopMaskingStripImageRectTransform = currentBottomMaskingStripImageRectTransform;
+                currentBottomMaskingStripImageRectTransform = tempCurrentTopMaskingStripImageRectTransform;
+                currentTopMaskingStripImageRectTransform.SetSiblingIndex(0);
+            }
         }
 
         private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
