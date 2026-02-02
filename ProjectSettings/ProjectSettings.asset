@@ -848,7 +848,7 @@ PlayerSettings:
     PS4: DOTWEEN
     PS5: DOTWEEN
     QNX: DOTWEEN
-    Standalone: 
+    Standalone: UNITY_PIPELINE_URP;ASSET_INVENTORY
     VisionOS: DOTWEEN
     WebGL: DOTWEEN;UNITY_PIPELINE_URP;ASSET_INVENTORY
     Windows Store Apps: DOTWEEN
