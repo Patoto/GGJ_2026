@@ -5234,7 +5234,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 884f0fb7fabe349e4a7d3c54e4debf96, type: 2}
     - target: {fileID: 4876077624186418307, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4876077624186418307, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].key
@@ -5261,6 +5261,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3822518911436941122, guid: 884f0fb7fabe349e4a7d3c54e4debf96, type: 2}
     - target: {fileID: 4876077624186418307, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].key
+      value: 
+      objectReference: {fileID: -4854123007400695058, guid: 884f0fb7fabe349e4a7d3c54e4debf96, type: 2}
+    - target: {fileID: 4876077624186418307, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
       propertyPath: m_SceneBindings.Array.data[0].value
       value: 
       objectReference: {fileID: 301800401}
@@ -5284,6 +5288,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
       objectReference: {fileID: 871131652}
+    - target: {fileID: 4876077624186418307, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
+      propertyPath: m_SceneBindings.Array.data[6].value
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5070956714923266982, guid: c3f2e055bf9d6468d91a3704ef4c1cd2, type: 3}
       propertyPath: m_Name
       value: DoorCatchEvent
