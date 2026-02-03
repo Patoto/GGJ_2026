@@ -45,7 +45,7 @@ namespace GGJ_2026
 #if UNITY_IOS || UNITY_ANDROID
 				const float MULTIPLIER = 0.00001f;
 #else
-				const float MULTIPLIER = 0.0005f;
+				const float MULTIPLIER = 0.00002f;
 #endif
 				tapePercentageLeftAmount -= Mathf.Abs(y) * MULTIPLIER;
 				if (tapePercentageLeftAmount <= 0f)
