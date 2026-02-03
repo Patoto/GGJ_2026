@@ -23,6 +23,7 @@ namespace GGJ_2026
 			CatchEventsHandler.onAboutToInvokeFirstCatchEvent += OnCatchEventsHandlerAboutToInvokeFirstCatchEvent;
 			LoseHandler.onAboutToShowJumpscareMom += OnLoseHandlerAboutToShowJumpscareMom;
 			CatchHandler.onCaught += OnCatchHandlerCaught;
+            MaskingTape.onSetState += OnMaskingTapeSetState;
 		}
 
         public virtual void UnsubscribeFromInitializeEvents()
@@ -30,6 +31,7 @@ namespace GGJ_2026
 			CatchEventsHandler.onAboutToInvokeFirstCatchEvent -= OnCatchEventsHandlerAboutToInvokeFirstCatchEvent;
 			LoseHandler.onAboutToShowJumpscareMom -= OnLoseHandlerAboutToShowJumpscareMom;
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
+            MaskingTape.onSetState -= OnMaskingTapeSetState;
 		}
 
         private void OnCatchHandlerCaught()
@@ -76,5 +78,13 @@ namespace GGJ_2026
 		{
 			timeOutGameObject.SetActive(false);
 		}
+
+        private void OnMaskingTapeSetState(MaskingTape.State state)
+        {
+            if (state == MaskingTape.State.Empty)
+            {
+                StopAllCoroutines();
+            }
+        }
     }
 }
