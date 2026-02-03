@@ -45,7 +45,7 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerDown(PointerEventData pointerEventData)
 		{
-			if (canReceiveInputs)
+			if (this != null && canReceiveInputs)
 			{
 				Toggle(true);
 				UpdatePosition(pointerEventData);
@@ -54,7 +54,7 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerDrag(PointerEventData pointerEventData)
         {
-			if (canReceiveInputs)
+			if (this != null && canReceiveInputs)
 			{
 				UpdatePosition(pointerEventData);
 			}
@@ -71,7 +71,7 @@ namespace GGJ_2026
 
         private void OnLevelPointerListenerPointerUp(PointerEventData pointerEventData)
 		{
-			if (canReceiveInputs)
+			if (this != null && canReceiveInputs)
 			{
 				Toggle(false);
 			}
@@ -79,22 +79,25 @@ namespace GGJ_2026
 
         private void OnCatchHandlerCaught()
 		{
-			ToggleCanReveiveInputs(false);
-			Toggle(false);
+			if (this != null)
+			{
+				ToggleCanReveiveInputs(false);
+				Toggle(false);
+			}
 		}
 
 		private void Toggle(bool on)
 		{
-			if (this != null)
-			{
-				gameObject.SetActive(on);
-				onToggled?.Invoke(on);
-			}
+			gameObject.SetActive(on);
+			onToggled?.Invoke(on);
 		}
 
         private void OnLevelHandlerFinishedIntroTimeline()
 		{
-			ToggleCanReveiveInputs(true);
+			if (this != null)
+			{
+				ToggleCanReveiveInputs(true);
+			}
 		}
 
 		private void ToggleCanReveiveInputs(bool on)
@@ -105,7 +108,7 @@ namespace GGJ_2026
 
         private void OnLevelHandlerStartedMyStartCoroutine()
 		{
-			if (!GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
+			if (this != null && !GameManager.instance.persistentDataManager.IsFirstTimePlayingALevelThisSession())
 			{
 				ToggleCanReveiveInputs(true);
 			}
@@ -113,7 +116,7 @@ namespace GGJ_2026
 
         private void OnMaskingTapeSetState(MaskingTape.State state)
 		{
-			if (state == MaskingTape.State.Empty)
+			if (this != null && state == MaskingTape.State.Empty)
 			{
 				ToggleCanReveiveInputs(false);
 				Toggle(false);
