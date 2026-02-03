@@ -51,7 +51,7 @@ namespace GGJ_2026
 
         private IEnumerator UpdateTimeCoroutine()
         {
-            while (currentSecondsRemaining >= 0)
+            while (currentSecondsRemaining > 0)
             {
                 yield return new WaitForSeconds(1f);
                 currentSecondsRemaining--;
