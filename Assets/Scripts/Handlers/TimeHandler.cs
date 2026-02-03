@@ -24,6 +24,7 @@ namespace GGJ_2026
 			LoseHandler.onAboutToShowJumpscareMom += OnLoseHandlerAboutToShowJumpscareMom;
 			CatchHandler.onCaught += OnCatchHandlerCaught;
             MaskingTape.onSetState += OnMaskingTapeSetState;
+            WinHandler.onShowedWinScreen += OnWinHandlerShowedWinScreen;
 		}
 
         public virtual void UnsubscribeFromInitializeEvents()
@@ -32,6 +33,7 @@ namespace GGJ_2026
 			LoseHandler.onAboutToShowJumpscareMom -= OnLoseHandlerAboutToShowJumpscareMom;
 			CatchHandler.onCaught -= OnCatchHandlerCaught;
             MaskingTape.onSetState -= OnMaskingTapeSetState;
+            WinHandler.onShowedWinScreen -= OnWinHandlerShowedWinScreen;
 		}
 
         private void OnCatchHandlerCaught()
@@ -85,6 +87,11 @@ namespace GGJ_2026
             {
                 StopAllCoroutines();
             }
+        }
+
+        private void OnWinHandlerShowedWinScreen()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
