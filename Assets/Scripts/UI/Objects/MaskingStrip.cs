@@ -71,7 +71,7 @@ namespace GGJ_2026
             {
                 maskingSound = GameManager.instance.audioManager.PlaySound(maskingSoundPrefab);
             }
-            TapticManager.Impact(ImpactFeedback.Light);
+            TapticManager.Impact(ImpactFeedback.Medium);
             onAddedY?.Invoke(y);
         }
 
