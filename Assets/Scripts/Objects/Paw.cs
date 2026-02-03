@@ -85,8 +85,11 @@ namespace GGJ_2026
 
 		private void Toggle(bool on)
 		{
-			gameObject.SetActive(on);
-			onToggled?.Invoke(on);
+			if (this != null)
+			{
+				gameObject.SetActive(on);
+				onToggled?.Invoke(on);
+			}
 		}
 
         private void OnLevelHandlerFinishedIntroTimeline()
